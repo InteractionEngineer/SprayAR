@@ -40,6 +40,12 @@ namespace SprayAR
             //TODO: Determine concrete address schema
             _receiver.Bind(OSCRoutes.Root + "/*", OnMessageReceived);
 
+            SprayButtonPressedHandler sprayButtonPressedHandler = new();
+            SprayingCanActiveHandler sprayingCanActiveHandler = new();
+            
+            _dispatcher.RegisterHandler(OSCRoutes.INSpray, sprayButtonPressedHandler);
+            _dispatcher.RegisterHandler(OSCRoutes.INSprayCanActive, sprayingCanActiveHandler);
+
             _transmitter.RemoteHost = _sprayingCanIP;
             _transmitter.RemotePort = _sprayingCanPort;
         }
