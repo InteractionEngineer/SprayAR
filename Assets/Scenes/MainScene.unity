@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782d9f2d3baf36641904ead4e79e4fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprayingCanIP: 
+  _sprayingCanIP: 127.0.0.1
   _sprayingCanPort: 9000
   _receiverPort: 9001
 --- !u!20 &1120491495 stripped
