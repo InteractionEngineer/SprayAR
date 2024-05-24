@@ -24,7 +24,10 @@ jobs:
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v3
+        uses: AgarwalSaurav/ghaction-doxygen-ghpages@release/v2
         with:
           github_token: ${{ secrets.SPRAYARDOC }}
-          publish_dir: ./docs
+          working-directory: .
+          doxyfile-path: doc/Doxyfile
+          html-output-folder: doc/html
+          branch: gh-pages
