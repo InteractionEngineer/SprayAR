@@ -1,0 +1,4 @@
+<map id="SprayAR.OSCSender.CreateMessage" name="SprayAR.OSCSender.CreateMessage">
+<area shape="rect" id="node1" title="Creates an OSCMessage to be sent, containing address and data." alt="" coords="241,5,440,47"/>
+<area shape="rect" id="node2" href="$classSprayAR_1_1OSCSender.html#a3aa60d7f0902e0b253fad58f251ec7af" title="Sends an OSC message using the specified transmitter." alt="" coords="5,13,193,39"/>
+</map>
