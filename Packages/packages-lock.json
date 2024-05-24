@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "com.credocodes.eventbus": {
-      "version": "file:C:/Users/David/repos/Custom Unity Packages/Event Bus",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.iam1337.extosc": {
       "version": "https://github.com/iam1337/extOSC.git#upm",
       "depth": 0,

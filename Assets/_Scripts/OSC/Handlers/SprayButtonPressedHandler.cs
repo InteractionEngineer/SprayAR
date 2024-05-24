@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using extOSC;
-using General.EventBus;
+using SprayAR.General;
 using UnityEngine;
 
 namespace SprayAR

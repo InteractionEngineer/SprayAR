@@ -1,5 +1,5 @@
 using extOSC;
-using General.EventBus;
+using SprayAR.General;
 using UnityEngine;
 
 namespace SprayAR
