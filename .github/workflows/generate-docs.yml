@@ -28,6 +28,6 @@ jobs:
         with:
           github_token: ${{ secrets.SPRAYARDOC }}
           working-directory: .
-          doxyfile-path: doc/Doxyfile
+          doxyfile-path: Doxyfile
           html-output-folder: doc/html
           branch: gh-pages
