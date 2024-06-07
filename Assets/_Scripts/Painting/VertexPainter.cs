@@ -57,7 +57,7 @@ namespace SprayAR
                 if (Vector3.Distance(worldPosition, position) < 0.5f)
                 {
                     colors[i] = color;
-                    Debug.Log($"Painted vertex {i} at {worldPosition}");
+                    // Debug.Log($"Painted vertex {i} at {worldPosition}");
 
                 }
             }

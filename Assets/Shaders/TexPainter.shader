@@ -61,6 +61,7 @@ Shader "Custom/BlendingPaintShader"
                 if (dist < _BrushSize)
                 {
                     float blendFactor = (1 - dist / _BrushSize) * brushColor.a;
+                    // float blendFactor = smoothstep(_BrushSize * 1.5, 0, dist) * brushColor.a;
                     return lerp(original, brushColor, blendFactor);
                 }
                 return original;

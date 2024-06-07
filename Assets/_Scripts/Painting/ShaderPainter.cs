@@ -42,6 +42,7 @@ namespace SprayAR
 
             // Initialize the paint material with the custom shader
             paintMaterial = new Material(paintShader);
+            Debug.Log("color opacity: " + brushColor.a);
         }
 
         void Update()
@@ -55,21 +56,26 @@ namespace SprayAR
                     if (renderer != null)
                     {
                         // Get texture coordinates
+                        float dist = Vector3.Distance(hit.point, transform.position);
                         Vector2 uv = hit.textureCoord;
-                        Paint(uv);
+                        Paint(uv, dist);
                     }
                 }
             }
         }
 
-        public void Paint(Vector2 uv)
+        public void Paint(Vector2 uv, float dist)
         {
             // Set shader parameters
+            float radius = CalculatePaintingRadius(dist);
+            brushSize = radius;
+            float opacity = CalculateOpacity(dist);
+            brushStrength = opacity;
             paintMaterial.SetVector("_BrushUV", new Vector4(uv.x, uv.y, 0, 0));
-            paintMaterial.SetFloat("_BrushSize", brushSize);
+            paintMaterial.SetFloat("_BrushSize", radius);
             paintMaterial.SetColor("_BrushColor", brushColor);
             paintMaterial.SetTexture("_BrushTex", brushTexture);
-            paintMaterial.SetFloat("_BrushStrength", brushStrength);
+            paintMaterial.SetFloat("_BrushStrength", opacity);
             // Render to the tempRenderTexture
             Graphics.Blit(renderTexture, tempRenderTexture, paintMaterial);
 
@@ -78,6 +84,22 @@ namespace SprayAR
 
             // Apply the RenderTexture to the object's material
             GetComponent<Renderer>().material.mainTexture = renderTexture;
+        }
+
+        private float CalculatePaintingRadius(float dist)
+        {
+            float maxDist = 3.0f;
+            float distanceRatio = dist / maxDist;
+            Debug.Log("Distance ratio: " + distanceRatio);
+            return Mathf.Lerp(0.0001f, 0.3f, distanceRatio);
+
+        }
+
+        private float CalculateOpacity(float dist)
+        {
+            float maxDist = 3.0f;
+            float distanceRatio = dist / maxDist;
+            return Mathf.Lerp(1, 0.01f, distanceRatio);
         }
 
         void OnDestroy()

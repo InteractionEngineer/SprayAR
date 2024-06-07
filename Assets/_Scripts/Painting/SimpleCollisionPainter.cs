@@ -8,12 +8,13 @@ namespace SprayAR
         void Update()
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 1))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 3))
             {
                 if (hit.collider.GetComponent<ShaderPainter>() != null)
                 {
                     Vector2 pixelUV = hit.textureCoord;
-                    hit.collider.GetComponent<ShaderPainter>().Paint(pixelUV);
+                    float dist = Vector3.Distance(hit.point, transform.position);
+                    hit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist);
                 }
             }
         }
@@ -28,7 +29,7 @@ namespace SprayAR
                 if (Physics.Raycast(collisionPoint, Vector3.down, out hit))
                 {
                     Vector2 pixelUV = hit.textureCoord;
-                    collision.gameObject.GetComponent<ShaderPainter>().Paint(pixelUV);
+                    // collision.gameObject.GetComponent<ShaderPainter>().Paint(pixelUV);
                 }
             }
         }
