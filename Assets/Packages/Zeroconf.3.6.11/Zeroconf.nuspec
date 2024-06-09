@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Zeroconf</id>
+    <version>3.6.11</version>
+    <authors>Claire Novotny</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/novotnyllc/Zeroconf</projectUrl>
+    <description>Bonjour support for .NET 6, .NET Standard 2.0, .NET Framework, Xamarin, and UWP</description>
+    <copyright>© Claire Novotny 2016-2022</copyright>
+    <tags>zeroconf bonjour mdns service discovery xamarin netstandard universal</tags>
+    <repository type="git" url="https://github.com/novotnyllc/Zeroconf" commit="252bb9701692428c0f7663bbafc57ec576dd773f" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.8">
+        <dependency id="System.Reactive" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="Xamarin.iOS1.0">
+        <dependency id="System.Reactive" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net6.0">
+        <dependency id="System.Reactive" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Reactive" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Drawing.Common.dll" targetFramework="Xamarin.iOS1.0" />
+    </frameworkAssemblies>
+  </metadata>
+</package>
