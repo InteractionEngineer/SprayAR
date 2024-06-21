@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using extOSC;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace SprayAR
@@ -40,11 +38,11 @@ namespace SprayAR
             //TODO: Determine concrete address schema
             _receiver.Bind(OSCRoutes.Root + "/*", OnMessageReceived);
 
-            SprayButtonPressedHandler sprayButtonPressedHandler = new();
+            SprayingCanStateHandler sprayingCanStateHandler = new();
             SprayingCanActiveHandler sprayingCanActiveHandler = new();
-            
-            _dispatcher.RegisterHandler(OSCRoutes.INSpray, sprayButtonPressedHandler);
-            _dispatcher.RegisterHandler(OSCRoutes.INSprayCanActive, sprayingCanActiveHandler);
+
+            _dispatcher.RegisterHandler(OSCRoutes.INState, sprayingCanStateHandler);
+            _dispatcher.RegisterHandler(OSCRoutes.INPing, sprayingCanActiveHandler);
 
             _transmitter.RemoteHost = _sprayingCanIP;
             _transmitter.RemotePort = _sprayingCanPort;

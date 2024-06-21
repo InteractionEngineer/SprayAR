@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SprayAR.General;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,22 +11,31 @@ namespace SprayAR
     public class ControllerPaintingTest : MonoBehaviour
     {
         [SerializeField] private InputAction _paintAction;
-        void Update()
+
+        private void OnEnable()
         {
-            Paint();
+            _paintAction.performed += OnButtonPressed;
+            _paintAction.Enable();
         }
 
-        private void Paint()
+        void OnButtonPressed(InputAction.CallbackContext value)
         {
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 1))
+            if (value.ReadValue<float>() > 0.0f)
             {
-                if (hit.collider.GetComponent<ShaderPainter>() != null)
-                {
-                    Vector2 pixelUV = hit.textureCoord;
-                    float dist = Vector3.Distance(hit.point, transform.position);
-                    hit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist);
-                }
+                float force = value.ReadValue<float>();
+                EventBus<SprayCanStateEvent>.Raise(new SprayCanStateEvent(force, true));
+            }
+            else
+            {
+                EventBus<SprayCanStateEvent>.Raise(new SprayCanStateEvent(0, false));
             }
         }
+
+        private void OnDisable()
+        {
+            _paintAction.Disable();
+        }
+
+
     }
 }

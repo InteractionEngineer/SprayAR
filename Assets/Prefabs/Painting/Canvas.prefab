@@ -120,6 +120,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paintShader: {fileID: 4800000, guid: 24999f95597b6634193b3ac892111008, type: 3}
-  brushSize: 0.07
+  brushSize: 0.01
   brushColor: {r: 0, g: 0.41038322, b: 1, a: 1}
   brushStrength: 1
+  maxSprayDistance: 0.5
+  opacityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.9000015
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.05001068
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
