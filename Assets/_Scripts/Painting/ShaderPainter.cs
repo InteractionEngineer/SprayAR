@@ -11,8 +11,10 @@ namespace SprayAR
         private RenderTexture tempRenderTexture;
         private Texture2D brushTexture;
         public float brushSize = 0.1f;
-        public Color brushColor = Color.red;
-        public float brushStrength = 0.4f;
+        [SerializeField] private Color brushColor = Color.red;
+        [SerializeField] private float brushStrength = 0.4f;
+        [SerializeField] private float maxSprayDistance = 0.5f;
+        [SerializeField] private AnimationCurve opacityCurve;
 
         void Start()
         {
@@ -58,24 +60,25 @@ namespace SprayAR
                         // Get texture coordinates
                         float dist = Vector3.Distance(hit.point, transform.position);
                         Vector2 uv = hit.textureCoord;
-                        Paint(uv, dist);
+                        Paint(uv, dist, brushColor);
                     }
                 }
             }
         }
 
-        public void Paint(Vector2 uv, float dist)
+        public void Paint(Vector2 uv, float dist, Color brushColor)
         {
             // Set shader parameters
             float radius = CalculatePaintingRadius(dist);
             brushSize = radius;
             float opacity = CalculateOpacity(dist);
+            //TODO: Add brush strength based on applied force to spray can
             brushStrength = opacity;
             paintMaterial.SetVector("_BrushUV", new Vector4(uv.x, uv.y, 0, 0));
             paintMaterial.SetFloat("_BrushSize", radius);
             paintMaterial.SetColor("_BrushColor", brushColor);
             paintMaterial.SetTexture("_BrushTex", brushTexture);
-            paintMaterial.SetFloat("_BrushStrength", opacity);
+            paintMaterial.SetFloat("_BrushStrength", brushStrength);
             // Render to the tempRenderTexture
             Graphics.Blit(renderTexture, tempRenderTexture, paintMaterial);
 
@@ -88,21 +91,19 @@ namespace SprayAR
 
         private float CalculatePaintingRadius(float dist)
         {
-            float maxDist = 3.0f;
-            float distanceRatio = dist / maxDist;
+            float distanceRatio = dist / maxSprayDistance;
             Debug.Log("Distance ratio: " + distanceRatio);
-            return Mathf.Lerp(0.0001f, 0.3f, distanceRatio);
+            return Mathf.Lerp(0.005f, 0.1f, distanceRatio);
 
         }
 
         private float CalculateOpacity(float dist)
         {
-            float maxDist = 3.0f;
-            float distanceRatio = dist / maxDist;
-            return Mathf.Lerp(1, 0.01f, distanceRatio);
+            float distanceRatio = dist / maxSprayDistance;
+            return opacityCurve.Evaluate(distanceRatio);
         }
 
-        void OnDestroy()
+        private void OnDestroy()
         {
             renderTexture.Release();
             tempRenderTexture.Release();
