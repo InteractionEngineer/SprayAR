@@ -89,6 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782d9f2d3baf36641904ead4e79e4fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprayingCanIP: 192.168.178.65
-  _sprayingCanPort: 7001
-  _receiverPort: 7000
+  _sprayingCanIP: 192.168.100.145
+  _sprayingCanPort: 9999
+  _receiverPort: 8888

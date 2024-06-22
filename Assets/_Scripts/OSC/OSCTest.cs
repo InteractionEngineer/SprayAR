@@ -19,8 +19,6 @@ namespace SprayAR
             var message = new OSCMessage("/test");
             message.AddValue(OSCValue.Float(0.5f));
             transmitter.Send(message);
-            oSCReceiver.Bind("/test", ReceiveMessage);
-
         }
 
         // Update is called once per frame

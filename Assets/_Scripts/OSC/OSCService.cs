@@ -35,14 +35,13 @@ namespace SprayAR
             _transmitter = gameObject.GetOrAddComponent<OSCTransmitter>();
 
             _receiver.LocalPort = _receiverPort;
-            //TODO: Determine concrete address schema
             _receiver.Bind(OSCRoutes.Root + "/*", OnMessageReceived);
 
             SprayingCanStateHandler sprayingCanStateHandler = new();
-            SprayingCanActiveHandler sprayingCanActiveHandler = new();
+            SprayingCanPingHandler sprayingCanPingHandler = new();
 
             _dispatcher.RegisterHandler(OSCRoutes.INState, sprayingCanStateHandler);
-            _dispatcher.RegisterHandler(OSCRoutes.INPing, sprayingCanActiveHandler);
+            _dispatcher.RegisterHandler(OSCRoutes.INPing, sprayingCanPingHandler);
 
             _transmitter.RemoteHost = _sprayingCanIP;
             _transmitter.RemotePort = _sprayingCanPort;

@@ -1,32 +1,40 @@
+using System;
 using extOSC;
 using SprayAR.General;
 using UnityEngine;
 
 namespace SprayAR
 {
-    public class SprayingCanActiveHandler : IOSCAdressHandler
+    public class SprayingCanPingHandler : IOSCAdressHandler
     {
         public void HandleMessage(OSCMessage message)
         {
-            if (message.ToBool(out bool active))
+            if (message.ToString(out string pingMessage))
             {
-                EventBus<SprayingCanActiveEvent>.Raise(new SprayingCanActiveEvent(active));
+                if (pingMessage == "PING")
+                {
+                    EventBus<SprayingCanPingEvent>.Raise(new SprayingCanPingEvent(pingMessage));
+                }
+                else
+                {
+                    Debug.LogWarning("SprayingCanActiveHandler:: Received unexpected message: " + pingMessage);
+                }
             }
             else
             {
                 Debug.LogWarning("SprayingCanActiveHandler:: Failed to parse message as float.");
             }
         }
-    }
 
 
-    public struct SprayingCanActiveEvent : IEvent
-    {
-        public bool Active { get; private set; }
-
-        public SprayingCanActiveEvent(bool active)
+        public struct SprayingCanPingEvent : IEvent
         {
-            Active = active;
+            public string Active { get; private set; }
+
+            public SprayingCanPingEvent(string pingMessage)
+            {
+                Active = pingMessage;
+            }
         }
     }
 }
