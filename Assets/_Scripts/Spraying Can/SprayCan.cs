@@ -19,6 +19,18 @@ namespace SprayAR
         public bool IsEmpty => currentFillLevel <= 0;
         public bool IsFull => currentFillLevel >= maxFillLevel;
 
+        public Color SprayColor { get => _sprayColor; private set => _sprayColor = value; }
+
+        public void ChangeSprayColor(Color newColor)
+        {
+            if (newColor == SprayColor)
+            {
+                return;
+            }
+            SprayColor = newColor;
+            _feedbackSystem.UpdateSprayColor(newColor);
+        }
+
         public void UseSpray(float amount)
         {
             currentFillLevel = Mathf.Max(currentFillLevel - amount, 0);
@@ -48,7 +60,7 @@ namespace SprayAR
                 {
                     Vector2 pixelUV = hit.textureCoord;
                     float dist = Vector3.Distance(hit.point, _sprayCanBody.position);
-                    hit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist, _sprayColor);
+                    hit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist, SprayColor);
                 }
             }
         }

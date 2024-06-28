@@ -4,7 +4,6 @@ namespace SprayAR
 {
     public class ShaderPainter : MonoBehaviour
     {
-        private Camera cam;
         public Shader paintShader;
         private Material paintMaterial;
         private RenderTexture renderTexture;
@@ -18,7 +17,6 @@ namespace SprayAR
 
         void Start()
         {
-            cam = Camera.main;
             Debug.Log("Bounds size: " + GetComponent<Renderer>().bounds.size);
             int textureWidth = Mathf.Max(Mathf.ClosestPowerOfTwo((int)GetComponent<Renderer>().bounds.size.x * 1000), 2048);
             int textureHeight = Mathf.Max(Mathf.ClosestPowerOfTwo((int)GetComponent<Renderer>().bounds.size.z * 1000), 2048);
@@ -30,7 +28,6 @@ namespace SprayAR
             renderTexture.Create();
             RenderTexture.active = null;
 
-            // Initialize the temporary RenderTexture
             tempRenderTexture = new RenderTexture(textureWidth, textureHeight, 0, RenderTextureFormat.ARGB32);
             RenderTexture.active = tempRenderTexture;
             GL.Clear(true, true, Color.white);
@@ -45,25 +42,6 @@ namespace SprayAR
             // Initialize the paint material with the custom shader
             paintMaterial = new Material(paintShader);
             Debug.Log("color opacity: " + brushColor.a);
-        }
-
-        void Update()
-        {
-            if (Input.GetMouseButton(0))
-            {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit hit))
-                {
-                    Renderer renderer = hit.collider.GetComponent<Renderer>();
-                    if (renderer != null)
-                    {
-                        // Get texture coordinates
-                        float dist = Vector3.Distance(hit.point, transform.position);
-                        Vector2 uv = hit.textureCoord;
-                        Paint(uv, dist, brushColor);
-                    }
-                }
-            }
         }
 
         public void Paint(Vector2 uv, float dist, Color brushColor)

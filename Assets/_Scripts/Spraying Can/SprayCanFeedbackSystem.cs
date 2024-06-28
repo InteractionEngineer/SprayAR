@@ -20,6 +20,12 @@ namespace SprayAR
             spraySound.Stop();
         }
 
+        public void UpdateSprayColor(Color newColor)
+        {
+            var mainModule = sprayParticles.main;
+            mainModule.startColor = newColor;
+        }
+
         void Update()
         {
             RealignParticles();

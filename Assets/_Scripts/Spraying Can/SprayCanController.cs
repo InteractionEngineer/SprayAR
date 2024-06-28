@@ -34,9 +34,6 @@ namespace SprayAR
             Force = data.Force;
         }
 
-        // TODO: Implement Painting method. This method should be called when the spray can is grabbed and the user is applying force to the nozzle head.
-        // Mock this first, until spraying can is built.
-        // Try to make it as generic as possible, so that the mock can be easily replaced with the actual spraying can.
         void Paint()
         {
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 0.75f))

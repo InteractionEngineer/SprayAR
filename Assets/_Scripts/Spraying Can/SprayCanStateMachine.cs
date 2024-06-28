@@ -14,6 +14,7 @@ namespace SprayAR
         public readonly ISprayCanState Idle;
         public readonly ISprayCanState Spraying;
         public readonly ISprayCanState Standby;
+        public readonly ISprayCanState ChangeColor;
 
         public SprayCanStateMachine(SprayCan can, SprayCanFeedbackSystem sprayCanFeedbackSystem)
         {
@@ -22,6 +23,7 @@ namespace SprayAR
             Idle = new IdleState(this);
             Spraying = new SprayingState(this, _feedbackSystem);
             Standby = new StandbyState(this);
+            ChangeColor = new ChangeColorState(this);
 
             _sprayCanStateEventBinding = new EventBinding<SprayCanStateEvent>(OnSprayCanStateEvent);
             EventBus<SprayCanStateEvent>.Register(_sprayCanStateEventBinding);
