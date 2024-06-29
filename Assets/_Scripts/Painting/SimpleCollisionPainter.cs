@@ -10,26 +10,28 @@ namespace SprayAR
 
             float distanceToLastPaint = Vector3.Distance(_lastPaintPosition, transform.position);
 
-            if (distanceToLastPaint > 0.2f)
-            {
-                int steps = Mathf.CeilToInt(distanceToLastPaint / 0.5f);
-                for (int i = 0; i < steps; i++)
-                {
-                    Vector3 pos = Vector3.Lerp(_lastPaintPosition, transform.position, i / (float)steps);
-                    RaycastHit interpolatedHit;
-                    if (Physics.Raycast(pos, transform.forward, out interpolatedHit, 0.75f))
-                    {
-                        if (interpolatedHit.collider.GetComponent<ShaderPainter>() != null)
-                        {
-                            Vector2 pixelUV = interpolatedHit.textureCoord;
-                            float dist = Vector3.Distance(interpolatedHit.point, transform.position);
-                            interpolatedHit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist, Color.red);
-                        }
-                    }
-                }
-            }
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 0.5f))
+            // if (distanceToLastPaint > 0.2f)
+            // {
+            //     int steps = Mathf.CeilToInt(distanceToLastPaint / 0.5f);
+            //     for (int i = 0; i < steps; i++)
+            //     {
+            //         Vector3 pos = Vector3.Lerp(_lastPaintPosition, transform.position, i / (float)steps);
+            //         RaycastHit interpolatedHit;
+            //         if (Physics.Raycast(pos, transform.forward, out interpolatedHit, 0.75f))
+            //         {
+            //             if (interpolatedHit.collider.GetComponent<ShaderPainter>() != null)
+            //             {
+            //                 Vector2 pixelUV = interpolatedHit.textureCoord;
+            //                 float dist = Vector3.Distance(interpolatedHit.point, transform.position);
+            //                 interpolatedHit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist, Color.red);
+            //             }
+            //         }
+            //     }
+            // }
+            RaycastHit[] hits = new RaycastHit[1]; 
+            Physics.RaycastNonAlloc(transform.position, transform.forward, hits, 0.75f);
+            RaycastHit hit = hits[0];
+            if (hit.collider != null)
             {
                 if (hit.collider.GetComponent<ShaderPainter>() != null)
                 {

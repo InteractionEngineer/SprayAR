@@ -9,6 +9,14 @@ namespace SprayAR
         private RenderTexture renderTexture;
         private RenderTexture tempRenderTexture;
         private Texture2D brushTexture;
+        private float _aspectRatio;
+        private Renderer _renderer;
+
+        private bool isContinuousBrushStroke = false;
+
+        private float lastBrushTime;
+        private Vector2 lastBrushPos;
+
         public float brushSize = 0.1f;
         [SerializeField] private Color brushColor = Color.red;
         [SerializeField] private float brushStrength = 0.4f;
@@ -17,20 +25,46 @@ namespace SprayAR
 
         void Start()
         {
-            Debug.Log("Bounds size: " + GetComponent<Renderer>().bounds.size);
-            int textureWidth = Mathf.Max(Mathf.ClosestPowerOfTwo((int)GetComponent<Renderer>().bounds.size.x * 1000), 2048);
-            int textureHeight = Mathf.Max(Mathf.ClosestPowerOfTwo((int)GetComponent<Renderer>().bounds.size.z * 1000), 2048);
+            // InitializeCanvas();
+            _renderer = GetComponent<Renderer>();
+        }
+
+        public void InitializeCanvas()
+        {
+            int textureWidth;
+            int textureHeight;
+            if (GetComponent<Renderer>().bounds.size.x / GetComponent<Renderer>().bounds.size.z > 1)
+            {
+                Debug.Log("Width is greater than height");
+                textureWidth = Mathf.Max(Mathf.ClosestPowerOfTwo((int)GetComponent<Renderer>().bounds.size.x * 1000), 2048);
+                textureHeight = Mathf.Max(Mathf.ClosestPowerOfTwo((int)GetComponent<Renderer>().bounds.size.z * 1000), 2048);
+            }
+            else if (GetComponent<Renderer>().bounds.size.z / GetComponent<Renderer>().bounds.size.x > 1)
+            {
+                Debug.Log("Height is greater than width");
+                textureWidth = Mathf.Max(Mathf.ClosestPowerOfTwo((int)GetComponent<Renderer>().bounds.size.z * 1000), 2048);
+                textureHeight = Mathf.Max(Mathf.ClosestPowerOfTwo((int)GetComponent<Renderer>().bounds.size.x * 1000), 2048);
+            }
+            else
+            {
+                Debug.Log("Width and height are equal");
+                textureWidth = 2048;
+                textureHeight = 2048;
+            }
+
+            _aspectRatio = textureWidth / (float)textureHeight;
             Debug.Log("Texture size: " + textureWidth + "x" + textureHeight);
+            Debug.Log("Aspect ratio: " + _aspectRatio);
 
             renderTexture = new RenderTexture(textureWidth, textureHeight, 0, RenderTextureFormat.ARGB32);
             RenderTexture.active = renderTexture;
-            GL.Clear(true, true, Color.white);
+            GL.Clear(true, true, Color.clear);
             renderTexture.Create();
             RenderTexture.active = null;
 
             tempRenderTexture = new RenderTexture(textureWidth, textureHeight, 0, RenderTextureFormat.ARGB32);
             RenderTexture.active = tempRenderTexture;
-            GL.Clear(true, true, Color.white);
+            GL.Clear(true, true, Color.clear);
             tempRenderTexture.Create();
             RenderTexture.active = null;
 
@@ -41,22 +75,38 @@ namespace SprayAR
 
             // Initialize the paint material with the custom shader
             paintMaterial = new Material(paintShader);
-            Debug.Log("color opacity: " + brushColor.a);
+
         }
 
         public void Paint(Vector2 uv, float dist, Color brushColor)
         {
+            if (Time.time - lastBrushTime > 0.2f)
+            {
+                isContinuousBrushStroke = false;
+            }
+            else
+            {
+                isContinuousBrushStroke = true;
+            }
             // Set shader parameters
             float radius = CalculatePaintingRadius(dist);
             brushSize = radius;
             float opacity = CalculateOpacity(dist);
             //TODO: Add brush strength based on applied force to spray can
             brushStrength = opacity;
+
+            Vector2 adjustedBrushSize = AdjustBrushSizeForAspectRatio(radius);
+
             paintMaterial.SetVector("_BrushUV", new Vector4(uv.x, uv.y, 0, 0));
-            paintMaterial.SetFloat("_BrushSize", radius);
+            paintMaterial.SetFloat("_BrushSizeX", adjustedBrushSize.x);
+            paintMaterial.SetFloat("_BrushSizeY", adjustedBrushSize.y);
             paintMaterial.SetColor("_BrushColor", brushColor);
             paintMaterial.SetTexture("_BrushTex", brushTexture);
             paintMaterial.SetFloat("_BrushStrength", brushStrength);
+            paintMaterial.SetFloat("_IsContinuousBrushStroke", isContinuousBrushStroke ? 1 : 0);
+            paintMaterial.SetVector("_PrevBrushUV", new Vector4(lastBrushPos.x, lastBrushPos.y, 0, 0));
+            lastBrushPos = uv;
+            lastBrushTime = Time.time;
             // Render to the tempRenderTexture
             Graphics.Blit(renderTexture, tempRenderTexture, paintMaterial);
 
@@ -64,7 +114,7 @@ namespace SprayAR
             Graphics.Blit(tempRenderTexture, renderTexture);
 
             // Apply the RenderTexture to the object's material
-            GetComponent<Renderer>().material.mainTexture = renderTexture;
+            _renderer.material.mainTexture = renderTexture;
         }
 
         private float CalculatePaintingRadius(float dist)
@@ -72,7 +122,23 @@ namespace SprayAR
             float distanceRatio = dist / maxSprayDistance;
             Debug.Log("Distance ratio: " + distanceRatio);
             return Mathf.Lerp(0.005f, 0.1f, distanceRatio);
+        }
 
+        private Vector2 AdjustBrushSizeForAspectRatio(float radius)
+        {
+
+            if (_aspectRatio > 1)
+            {
+                return new Vector2(radius / _aspectRatio, radius);
+            }
+            else if (_aspectRatio < 1)
+            {
+                return new Vector2(radius, radius * _aspectRatio);
+            }
+            else
+            {
+                return new Vector2(radius, radius);
+            }
         }
 
         private float CalculateOpacity(float dist)
