@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5503774051734234157}
   - component: {fileID: 794762096851101484}
   - component: {fileID: 5281623294619700655}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2122719001885188421}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9631202, y: 4.435763, z: -2.3807476}
-  m_LocalScale: {x: 0.25, y: 1, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -122,7 +122,7 @@ MonoBehaviour:
   paintShader: {fileID: 4800000, guid: 24999f95597b6634193b3ac892111008, type: 3}
   brushSize: 0.01
   brushColor: {r: 0, g: 0.41038322, b: 1, a: 1}
-  brushStrength: 1
+  brushStrength: 0.1
   maxSprayDistance: 0.5
   opacityCurve:
     serializedVersion: 2

@@ -123,12 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!82 &98624607 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5148292942195169940, guid: 61628743db8cfb5499a8d93f287af5df,
-    type: 3}
-  m_PrefabInstance: {fileID: 144000479}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &144000479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -329,6 +323,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0.087, y: 1.421}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &212869933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7221622263577172358, guid: 5fd2546ed6e6cf34199dd7eb96479066,
+    type: 3}
+  m_PrefabInstance: {fileID: 2309578322073851154}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &360141126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 515822596008285002, guid: 2f5f95317a6df3544922eff22de07768,
@@ -494,12 +494,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 144000479}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &449865604 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3644058932490577207, guid: 61628743db8cfb5499a8d93f287af5df,
-    type: 3}
-  m_PrefabInstance: {fileID: 144000479}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &470858676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1683101881661302667, guid: 2f5f95317a6df3544922eff22de07768,
@@ -598,6 +592,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &775886580 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5148292942195169940, guid: 61628743db8cfb5499a8d93f287af5df,
+    type: 3}
+  m_PrefabInstance: {fileID: 1199663368}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &778033502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3263833501211093240, guid: 5fd2546ed6e6cf34199dd7eb96479066,
@@ -806,6 +806,71 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7901131803293693324}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1481315202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1481315204}
+  - component: {fileID: 1481315203}
+  m_Layer: 0
+  m_Name: CanvasManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1481315203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481315202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a456f85bd086e50439d80c2caec37b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _virtualCanvasPrefab: {fileID: 2122719001885188421, guid: 6e0229fe556543445a4c1bf1894b73f3,
+    type: 3}
+  _arPlaneManager: {fileID: 1886528249}
+  _placeCanvasAction:
+    m_Name: Place Canvas
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1128db75-e7e2-4661-acb0-c5c3855ab051
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b4384a8c-11c5-416f-b156-c8767d95e4ec
+      m_Path: <XRController>{LeftHand}/triggerPressed
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Place Canvas
+      m_Flags: 0
+    m_Flags: 0
+  _controllerTransform: {fileID: 7901131803293693327}
+--- !u!4 &1481315204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481315202}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 47.10224, y: 2.127535, z: -11.026121}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1485973730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,6 +1068,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1199663368}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1685565503 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3644058932490577207, guid: 61628743db8cfb5499a8d93f287af5df,
+    type: 3}
+  m_PrefabInstance: {fileID: 1199663368}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1710167881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1208,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710167881}
   m_CullTransparentMesh: 1
+--- !u!114 &1886528249 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8701148496594068373, guid: 2f5f95317a6df3544922eff22de07768,
+    type: 3}
+  m_PrefabInstance: {fileID: 7901131803293693324}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1908242347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,9 +1364,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40a22e9c9e46ad4595bd3b3db793809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxFillLevel: 300
+  _maxFillLevel: 300
   _sprayCanBody: {fileID: 2309578322073851155}
-  _feedbackSystem: {fileID: 2046182795}
+  mask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &2046182794
 Transform:
   m_ObjectHideFlags: 0
@@ -1311,8 +1396,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c75921cde573f46be0393a78786858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprayParticles: {fileID: 449865604}
-  spraySound: {fileID: 98624607}
+  _sprayParticles: {fileID: 1685565503}
+  _activeColorIndicator: {fileID: 212869933}
+  _spraySound: {fileID: 775886580}
   _particleOrientationProvider: {fileID: 470858676}
 --- !u!1001 &2309578322073851154
 PrefabInstance:
@@ -1380,7 +1466,7 @@ PrefabInstance:
     - target: {fileID: 4588181191007793696, guid: 5fd2546ed6e6cf34199dd7eb96479066,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7540365013653368050, guid: 5fd2546ed6e6cf34199dd7eb96479066,
         type: 3}
@@ -1668,60 +1754,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 778033502}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 515822597543318453, guid: 2f5f95317a6df3544922eff22de07768,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7901131803293693328}
     - targetCorrespondingSourceObject: {fileID: 515822596008285002, guid: 2f5f95317a6df3544922eff22de07768,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 360141132}
   m_SourcePrefab: {fileID: 100100000, guid: 2f5f95317a6df3544922eff22de07768, type: 3}
---- !u!1 &7901131803293693326 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 515822597543318453, guid: 2f5f95317a6df3544922eff22de07768,
-    type: 3}
-  m_PrefabInstance: {fileID: 7901131803293693324}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7901131803293693327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 515822597543318442, guid: 2f5f95317a6df3544922eff22de07768,
     type: 3}
   m_PrefabInstance: {fileID: 7901131803293693324}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7901131803293693328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7901131803293693326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a456f85bd086e50439d80c2caec37b6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _virtualCanvasPrefab: {fileID: 2122719001885188421, guid: 6e0229fe556543445a4c1bf1894b73f3,
-    type: 3}
-  _arRaycastManager: {fileID: 0}
-  _placeCanvasAction:
-    m_Name: Place Canvas
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 1128db75-e7e2-4661-acb0-c5c3855ab051
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: b4384a8c-11c5-416f-b156-c8767d95e4ec
-      m_Path: <XRController>{LeftHand}/triggerPressed
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Place Canvas
-      m_Flags: 0
-    m_Flags: 0
-  _controllerTransform: {fileID: 7901131803293693327}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1736,3 +1779,4 @@ SceneRoots:
   - {fileID: 2618912967707948591}
   - {fileID: 1485973732}
   - {fileID: 2046182794}
+  - {fileID: 1481315204}
