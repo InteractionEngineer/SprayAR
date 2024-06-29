@@ -1,20 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SprayAR
 {
-    public class ChangeColorState : ISprayCanState
+    public class FillColorState : ISprayCanState
     {
 
         private float _progress = 0.0f;
 
+        private Color _color;
+
         private SprayCanStateMachine _stateMachine;
 
-        public ChangeColorState(SprayCanStateMachine stateMachine)
+        public FillColorState(SprayCanStateMachine stateMachine, Color color)
         {
             _stateMachine = stateMachine;
+            _color = color;
         }
 
         public void EnterState()
@@ -24,6 +24,10 @@ namespace SprayAR
 
         public void ExitState()
         {
+            if (_progress >= 1.0f)
+            {
+                _stateMachine.Can.SetSprayColor(_color);
+            }
             _progress = 0.0f;
         }
 
@@ -31,13 +35,20 @@ namespace SprayAR
         {
             if (!sprayCanStateEvent.IsGrabbed)
             {
-                _stateMachine.TransitionToState(_stateMachine.Standby);
+                _stateMachine.TransitionToState(new StandbyState(_stateMachine));
             }
         }
 
         //TODO: Implement color change logic. Maybe needs some refactoring. 
         public void Update()
         {
+            _progress += Time.deltaTime;
+            _stateMachine.Can.Refill(Time.deltaTime * 5);
+
+            if (_progress >= 1.0f)
+            {
+                _stateMachine.TransitionToState(new IdleState(_stateMachine));
+            }
         }
 
     }

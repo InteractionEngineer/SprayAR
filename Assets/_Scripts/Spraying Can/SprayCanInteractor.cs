@@ -18,8 +18,15 @@ namespace SprayAR
         {
             if (other.GetComponent<SprayColor>() != null)
             {
-                _sprayCan.ChangeSprayColor(other.GetComponent<SprayColor>().ColorData.Color);
-                GetComponent<Renderer>().material.color = _sprayCan.SprayColor;
+                _sprayCan.InitiateColorFill(other.GetComponent<SprayColor>().ColorData.Color);
+            }
+        }
+
+        void OnTriggerExit(Collider other)
+        {
+            if (other.GetComponent<SprayColor>() != null)
+            {
+                _sprayCan.AbortColorFill();
             }
         }
     }

@@ -26,7 +26,7 @@ namespace SprayAR
 
         public void OnSprayCanStateEvent(SprayCanStateEvent sprayCanStateEvent)
         {
-            if (sprayCanStateEvent.IsGrabbed) _stateMachine.TransitionToState(_stateMachine.Idle);
+            if (sprayCanStateEvent.IsGrabbed) _stateMachine.TransitionToState(new IdleState(_stateMachine));
         }
 
         public void Update()

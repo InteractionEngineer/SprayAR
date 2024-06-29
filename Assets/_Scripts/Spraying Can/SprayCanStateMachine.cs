@@ -9,36 +9,30 @@ namespace SprayAR
         private ISprayCanState _currentState;
 
         public SprayCan Can { get; private set; }
-        private SprayCanFeedbackSystem _feedbackSystem;
+        public ISprayCanState CurrentState { get => _currentState; private set => _currentState = value; }
 
-        public readonly ISprayCanState Idle;
-        public readonly ISprayCanState Spraying;
-        public readonly ISprayCanState Standby;
-        public readonly ISprayCanState ChangeColor;
+        public readonly SprayCanFeedbackSystem FeedbackSystem;
+
 
         public SprayCanStateMachine(SprayCan can, SprayCanFeedbackSystem sprayCanFeedbackSystem)
         {
             Can = can;
-            _feedbackSystem = sprayCanFeedbackSystem;
-            Idle = new IdleState(this);
-            Spraying = new SprayingState(this, _feedbackSystem);
-            Standby = new StandbyState(this);
-            ChangeColor = new ChangeColorState(this);
+            FeedbackSystem = sprayCanFeedbackSystem;
 
             _sprayCanStateEventBinding = new EventBinding<SprayCanStateEvent>(OnSprayCanStateEvent);
             EventBus<SprayCanStateEvent>.Register(_sprayCanStateEventBinding);
-            _currentState = Standby;
-            Debug.Log($"Initial state: {_currentState.GetType().Name}");
+            CurrentState = new StandbyState(this);
+            Debug.Log($"Initial state: {CurrentState.GetType().Name}");
         }
 
         private void OnSprayCanStateEvent(SprayCanStateEvent sprayCanStateEvent)
         {
-            _currentState?.OnSprayCanStateEvent(sprayCanStateEvent);
+            CurrentState?.OnSprayCanStateEvent(sprayCanStateEvent);
         }
 
         public void ExecuteStateUpdate()
         {
-            _currentState?.Update();
+            CurrentState?.Update();
         }
 
         public void Spray(float force)
@@ -49,10 +43,10 @@ namespace SprayAR
 
         public void TransitionToState(ISprayCanState newState)
         {
-            Debug.Log($"Transitioning from {_currentState.GetType().Name} to {newState.GetType().Name}");
-            _currentState?.ExitState();
-            _currentState = newState;
-            _currentState.EnterState();
+            Debug.Log($"Transitioning from {CurrentState.GetType().Name} to {newState.GetType().Name}");
+            CurrentState?.ExitState();
+            CurrentState = newState;
+            CurrentState.EnterState();
         }
     }
 }

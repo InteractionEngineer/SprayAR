@@ -22,13 +22,11 @@ namespace SprayAR
 
         public void EnterState()
         {
-            // TODO: Activate Particle System and play sound
             StartSpraying();
         }
 
         public void ExitState()
         {
-            // TODO: Deactivate Particle System and stop sound
             StopSpraying();
         }
 
@@ -36,7 +34,7 @@ namespace SprayAR
         {
             if (!sprayCanStateEvent.IsGrabbed)
             {
-                _stateMachine.TransitionToState(_stateMachine.Standby);
+                _stateMachine.TransitionToState(new StandbyState(_stateMachine));
             }
             else
             {
@@ -50,14 +48,14 @@ namespace SprayAR
                 }
                 else
                 {
-                    _stateMachine.TransitionToState(_stateMachine.Idle);
+                    _stateMachine.TransitionToState(new IdleState(_stateMachine));
                 }
             }
         }
 
         public void Update()
         {
-            _stateMachine.Spray(_sprayForce);
+            _stateMachine.Spray(_sprayForce * 10);
         }
 
         private void StartSpraying()

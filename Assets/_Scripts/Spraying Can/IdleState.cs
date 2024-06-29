@@ -27,13 +27,13 @@ namespace SprayAR
             if (!sprayCanStateEvent.IsGrabbed)
             {
                 //TODO: Transition to Standby state
-                _stateMachine.TransitionToState(_stateMachine.Idle);
+                _stateMachine.TransitionToState(new StandbyState(_stateMachine));
             }
             else
             {
                 if (sprayCanStateEvent.Force > 0.0f)
                 {
-                    _stateMachine.TransitionToState(_stateMachine.Spraying);
+                    _stateMachine.TransitionToState(new SprayingState(_stateMachine, _stateMachine.FeedbackSystem));
                 }
             }
         }

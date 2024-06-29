@@ -4,26 +4,28 @@ namespace SprayAR
 {
     public class SprayCanFeedbackSystem : MonoBehaviour
     {
-        [SerializeField] private ParticleSystem sprayParticles;
-        [SerializeField] private AudioSource spraySound;
+        [SerializeField] private ParticleSystem _sprayParticles;
+        [SerializeField] private GameObject _activeColorIndicator;
+        [SerializeField] private AudioSource _spraySound;
         [SerializeField] private Transform _particleOrientationProvider;
 
         public void ActivateFeedback()
         {
-            sprayParticles.Play();
-            spraySound.Play();
+            _sprayParticles.Play();
+            _spraySound.Play();
         }
 
         public void DeactivateFeedback()
         {
-            sprayParticles.Stop();
-            spraySound.Stop();
+            _sprayParticles.Stop();
+            _spraySound.Stop();
         }
 
         public void UpdateSprayColor(Color newColor)
         {
-            var mainModule = sprayParticles.main;
+            var mainModule = _sprayParticles.main;
             mainModule.startColor = newColor;
+            _activeColorIndicator.GetComponent<Renderer>().material.color = newColor;
         }
 
         void Update()
@@ -35,7 +37,7 @@ namespace SprayAR
         // Assuming that the palm is oriented away from the body while spraying, since this will be the natural position for the user when they are spraying.
         void RealignParticles()
         {
-            sprayParticles.transform.forward = -_particleOrientationProvider.up;
+            _sprayParticles.transform.forward = -_particleOrientationProvider.up;
         }
     }
 }
