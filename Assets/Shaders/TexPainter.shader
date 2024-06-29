@@ -89,14 +89,7 @@ Shader "Custom/BlendingPaintShader"
                     // float blendFactor = smoothstep(_BrushSize * 1.5, 0, dist) * brushColor.a;
                     half4 newColor = lerp(original, brushColor, blendFactor);
                     float alphaDiff = original.a - newColor.a;
-                    // if (alphaDiff < 0)
-                    // {
-                    //     newColor.a += -alphaDiff;
-                    // } else 
-                    // {
-                    //     newColor.a += alphaDiff;
-                    // }
-                    newColor.a += original.a;
+                    newColor.a += original.a * blendFactor;
                     newColor.rgb = lerp(original.rgb, brushColor.rgb, blendFactor);
                     newColor.a = clamp(newColor.a, 0, 1);
                     
