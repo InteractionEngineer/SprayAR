@@ -1,3 +1,4 @@
+using SprayAR.General;
 using UnityEngine;
 
 namespace SprayAR
@@ -19,15 +20,16 @@ namespace SprayAR
 
         public void EnterState()
         {
-            // _stateMachine.Can.EmptyCan();
-            _stateMachine.Can.SetSprayColor(_color);
+            EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEvent.FillColorEventType.Start));
             _progress = 0.0f;
         }
 
         public void ExitState()
         {
+            EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEvent.FillColorEventType.Stop));
             if (_progress >= 1.0f)
             {
+                _stateMachine.Can.SetSprayColor(_color);
             }
             _progress = 0.0f;
         }
