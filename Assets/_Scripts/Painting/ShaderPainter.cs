@@ -23,7 +23,7 @@ namespace SprayAR
         [SerializeField] private float maxSprayDistance = 0.5f;
         [SerializeField] private AnimationCurve opacityCurve;
 
-        void Start()
+        void Awake()
         {
             // InitializeCanvas();
             _renderer = GetComponent<Renderer>();
@@ -75,7 +75,7 @@ namespace SprayAR
 
             // Initialize the paint material with the custom shader
             paintMaterial = new Material(paintShader);
-
+            _renderer.material.mainTexture = renderTexture;
         }
 
         public void Paint(Vector2 uv, float dist, Color brushColor)
