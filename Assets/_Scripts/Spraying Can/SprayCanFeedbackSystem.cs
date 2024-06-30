@@ -14,15 +14,17 @@ namespace SprayAR
         [SerializeField] private Transform _particleOrientationProvider;
         [SerializeField] private GameObject _statsMenu;
         [SerializeField] private Image _colorIndicator;
-        private TextMeshProUGUI _fillIndicator;
+        [SerializeField] private Image _colorBackground;
+        [SerializeField] private float _colorBackgroundOpacity = 0.4f;
+        private float _colorIndicatorMaxHeight;
         private CanvasGroup _statsMenuCanvasGroup;
 
         void Awake()
         {
             _sprayParticles = _sprayCanVisual.GetComponentInChildren<ParticleSystem>();
             _spraySound = _sprayCanVisual.GetComponentInChildren<AudioSource>();
-            _fillIndicator = _statsMenu.GetComponentInChildren<TextMeshProUGUI>();
-            _statsMenuCanvasGroup = _statsMenu.GetComponent<CanvasGroup>();
+            // _statsMenuCanvasGroup = _statsMenu.GetComponent<CanvasGroup>();
+            _colorIndicatorMaxHeight = _colorIndicator.rectTransform.sizeDelta.y;
         }
 
         public void ActivateFeedback()
@@ -42,11 +44,12 @@ namespace SprayAR
             var mainModule = _sprayParticles.main;
             mainModule.startColor = newColor;
             _colorIndicator.color = newColor;
+            _colorBackground.color = new Color(newColor.r, newColor.g, newColor.b, _colorBackgroundOpacity);
         }
 
-        public void UpdateFillIndicator(float fillAmount)
+        public void UpdateFillIndicator(float percentage)
         {
-            _fillIndicator.text = $"{fillAmount * 100}%";
+            _colorIndicator.rectTransform.sizeDelta = new Vector2(_colorIndicator.rectTransform.sizeDelta.x, _colorIndicatorMaxHeight * percentage);
         }
 
         public void SetToStandby()
@@ -60,12 +63,13 @@ namespace SprayAR
         {
             if (_isInStandbyMode) return;
             _statsMenu.SetActive(true);
-            _statsMenuCanvasGroup.DOFade(1, 0.5f);
+
         }
 
         public void DeactivateStatsMenu()
         {
-            _statsMenuCanvasGroup.DOFade(0, 0.5f).OnComplete(() => _statsMenu.SetActive(false));
+            // _statsMenuCanvasGroup.DOFade(0, 0.5f).OnComplete(() => _statsMenu.SetActive(false));
+            _statsMenu.SetActive(false);
         }
 
         void Update()
@@ -75,6 +79,7 @@ namespace SprayAR
 
         // Finger tip is too dynamic, using the palm as a reference point. The up vector of the palm faces away from the back of the hand, therefore we need to invert it.
         // Assuming that the palm is oriented away from the body while spraying, since this will be the natural position for the user when they are spraying.
+        // Edit: Maybe not necessary anymore. Whole spray can is now attached to the palm.
         void RealignParticles()
         {
             _sprayParticles.transform.forward = -_particleOrientationProvider.up;

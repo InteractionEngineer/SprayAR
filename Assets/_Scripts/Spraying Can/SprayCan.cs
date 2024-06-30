@@ -10,7 +10,7 @@ namespace SprayAR
         private Color _sprayColor = Color.blue;
         private SprayCanStateMachine _stateMachine;
         [SerializeField] private float _maxFillLevel;
-        [SerializeField] private Transform _sprayCanBody;
+        [SerializeField] private Transform _nozzleOrigin;
         private SprayCanFeedbackSystem _feedbackSystem;
 
         private RaycastHit[] raycastHits = new RaycastHit[1];
@@ -18,6 +18,8 @@ namespace SprayAR
         [SerializeField] private LayerMask mask;
 
         public float CurrentFillLevel => _currentFillLevel;
+
+        public int FillLevelPercentage => (int)(_currentFillLevel / _maxFillLevel);
 
         public float MaxFillLevel => _maxFillLevel;
 
@@ -53,13 +55,19 @@ namespace SprayAR
         {
             _currentFillLevel = Mathf.Max(_currentFillLevel - amount, 0);
             Debug.Log($"Current fill level: {_currentFillLevel}");
-            _feedbackSystem.UpdateFillIndicator(_currentFillLevel / _maxFillLevel);
+            _feedbackSystem.UpdateFillIndicator(FillLevelPercentage);
         }
 
         public void Refill(float amount)
         {
             _currentFillLevel = Mathf.Min(_currentFillLevel + amount, _maxFillLevel);
-            _feedbackSystem.UpdateFillIndicator(_currentFillLevel / _maxFillLevel);
+            _feedbackSystem.UpdateFillIndicator(FillLevelPercentage);
+        }
+
+        public void EmptyCan()
+        {
+            _currentFillLevel = 0;
+            _feedbackSystem.UpdateFillIndicator(0);
         }
 
         void Start()
@@ -67,6 +75,7 @@ namespace SprayAR
             _feedbackSystem = GetComponent<SprayCanFeedbackSystem>();
             _currentFillLevel = _maxFillLevel;
             _stateMachine = new SprayCanStateMachine(this, _feedbackSystem);
+            _feedbackSystem.UpdateSprayColor(SprayColor);
         }
 
         void Update()
@@ -76,7 +85,7 @@ namespace SprayAR
 
         public void Paint()
         {
-            int hitCount = Physics.RaycastNonAlloc(_sprayCanBody.position, _sprayCanBody.forward, raycastHits, 0.75f, mask);
+            int hitCount = Physics.RaycastNonAlloc(_nozzleOrigin.position, _nozzleOrigin.forward, raycastHits, 0.75f, mask);
             if (hitCount == 0)
             {
                 return;
@@ -88,7 +97,7 @@ namespace SprayAR
                 if (hit.collider.GetComponent<ShaderPainter>() != null)
                 {
                     Vector2 pixelUV = hit.textureCoord;
-                    float dist = Vector3.Distance(hit.point, _sprayCanBody.position);
+                    float dist = Vector3.Distance(hit.point, _nozzleOrigin.position);
                     hit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist, SprayColor);
                 }
             }

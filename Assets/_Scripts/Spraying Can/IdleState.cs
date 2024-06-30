@@ -1,4 +1,7 @@
 
+
+using UnityEngine;
+
 namespace SprayAR
 {
     public class IdleState : ISprayCanState
@@ -31,10 +34,10 @@ namespace SprayAR
             }
             else
             {
-                if (sprayCanStateEvent.Force > 0.0f)
-                {
-                    _stateMachine.TransitionToState(new SprayingState(_stateMachine, _stateMachine.FeedbackSystem));
-                }
+            if (sprayCanStateEvent.Force > 0.0f)
+            {
+                _stateMachine.TransitionToState(new SprayingState(_stateMachine, _stateMachine.FeedbackSystem));
+            }
             }
         }
 

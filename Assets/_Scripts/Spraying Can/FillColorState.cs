@@ -19,6 +19,8 @@ namespace SprayAR
 
         public void EnterState()
         {
+            // _stateMachine.Can.EmptyCan();
+            _stateMachine.Can.SetSprayColor(_color);
             _progress = 0.0f;
         }
 
@@ -26,7 +28,6 @@ namespace SprayAR
         {
             if (_progress >= 1.0f)
             {
-                _stateMachine.Can.SetSprayColor(_color);
             }
             _progress = 0.0f;
         }
