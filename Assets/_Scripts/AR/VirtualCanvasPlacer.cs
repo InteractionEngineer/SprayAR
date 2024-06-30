@@ -10,22 +10,6 @@ namespace SprayAR
         [SerializeField] private GameObject _virtualCanvasPrefab;
 
         [SerializeField] private ARPlaneManager _arPlaneManager;
-        [SerializeField] private InputAction _placeCanvasAction;
-
-        [SerializeField] private Transform _controllerTransform;
-
-        // Start is called before the first frame update
-        void OnEnable()
-        {
-            _placeCanvasAction.performed += PlaceCanvas;
-            _placeCanvasAction.Enable();
-        }
-
-        void OnDisable()
-        {
-            _placeCanvasAction.performed -= PlaceCanvas;
-            _placeCanvasAction.Disable();
-        }
 
         IEnumerator Start()
         {
@@ -36,20 +20,6 @@ namespace SprayAR
             }
         }
 
-        private void PlaceCanvas(InputAction.CallbackContext context)
-        {
-            if (context.performed)
-            {
-                if (Physics.Raycast(_controllerTransform.position, _controllerTransform.forward, out RaycastHit hit))
-                {
-                    ARPlane arPlane = hit.transform.GetComponent<ARPlane>();
-                    if (arPlane != null)
-                    {
-                        PlaceVirtualPlane(arPlane);
-                    }
-                }
-            }
-        }
 
         void PlaceVirtualPlane(ARPlane plane)
         {
