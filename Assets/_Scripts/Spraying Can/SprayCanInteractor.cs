@@ -18,7 +18,7 @@ namespace SprayAR
         {
             if (other.GetComponent<SprayColor>() != null)
             {
-                _sprayCan.InitiateColorFill(other.GetComponent<SprayColor>().ColorData.Color);
+                _sprayCan.InitiateColorFill(other.GetComponent<SprayColor>().ColorData);
             }
         }
 

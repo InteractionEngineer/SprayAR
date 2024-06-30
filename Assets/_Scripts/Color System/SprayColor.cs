@@ -7,25 +7,18 @@ namespace SprayAR
 {
     public class SprayColor : MonoBehaviour
     {
-        [SerializeField] private ColorData _colorData;
+        [SerializeField] private Color _colorData;
 
-        public ColorData ColorData { get => _colorData; private set => _colorData = value; }
+        public Color ColorData { get => _colorData; private set => _colorData = value; }
 
-        // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             ConfigureColorSwatch();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         private void ConfigureColorSwatch()
         {
-            GetComponent<Renderer>().material.color = ColorData.Color;
+            GetComponent<Renderer>().material.color = ColorData;
         }
     }
 }

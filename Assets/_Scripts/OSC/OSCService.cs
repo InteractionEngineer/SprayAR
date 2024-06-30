@@ -45,6 +45,9 @@ namespace SprayAR
 
             _transmitter.RemoteHost = _sprayingCanIP;
             _transmitter.RemotePort = _sprayingCanPort;
+
+            FillColor fillColor = new(_transmitter);
+            Senders.Add(fillColor);
         }
 
         /// <summary>

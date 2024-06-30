@@ -25,14 +25,5 @@ namespace SprayAR
             transmitter.Send(message);
         }
     }
-
-    // TODO: Implement actual OSCSender classes for each OSC OUT route. This is just an example.
-    public class StartRefillSender : OSCSender
-    {
-        public override OSCMessage CreateMessage()
-        {
-            return new OSCMessage(OSCRoutes.OUTStartRefill);
-        }
-    }
 }
 
