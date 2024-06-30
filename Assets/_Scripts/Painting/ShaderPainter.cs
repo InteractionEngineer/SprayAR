@@ -33,17 +33,17 @@ namespace SprayAR
         {
             int textureWidth;
             int textureHeight;
-            if (GetComponent<Renderer>().bounds.size.x / GetComponent<Renderer>().bounds.size.z > 1)
+            if (_renderer.bounds.size.x / _renderer.bounds.size.z > 1)
             {
                 Debug.Log("Width is greater than height");
-                textureWidth = Mathf.Max(Mathf.ClosestPowerOfTwo((int)GetComponent<Renderer>().bounds.size.x * 1000), 2048);
-                textureHeight = Mathf.Max(Mathf.ClosestPowerOfTwo((int)GetComponent<Renderer>().bounds.size.z * 1000), 2048);
+                textureWidth = Mathf.Max(Mathf.ClosestPowerOfTwo((int)_renderer.bounds.size.x * 1000), 2048);
+                textureHeight = Mathf.Max(Mathf.ClosestPowerOfTwo((int)_renderer.bounds.size.z * 1000), 2048);
             }
-            else if (GetComponent<Renderer>().bounds.size.z / GetComponent<Renderer>().bounds.size.x > 1)
+            else if (_renderer.bounds.size.z / _renderer.bounds.size.x > 1)
             {
                 Debug.Log("Height is greater than width");
-                textureWidth = Mathf.Max(Mathf.ClosestPowerOfTwo((int)GetComponent<Renderer>().bounds.size.z * 1000), 2048);
-                textureHeight = Mathf.Max(Mathf.ClosestPowerOfTwo((int)GetComponent<Renderer>().bounds.size.x * 1000), 2048);
+                textureWidth = Mathf.Max(Mathf.ClosestPowerOfTwo((int)_renderer.bounds.size.z * 1000), 2048);
+                textureHeight = Mathf.Max(Mathf.ClosestPowerOfTwo((int)_renderer.bounds.size.x * 1000), 2048);
             }
             else
             {

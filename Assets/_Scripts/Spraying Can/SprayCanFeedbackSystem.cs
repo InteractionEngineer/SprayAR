@@ -1,13 +1,29 @@
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SprayAR
 {
     public class SprayCanFeedbackSystem : MonoBehaviour
     {
-        [SerializeField] private ParticleSystem _sprayParticles;
-        [SerializeField] private GameObject _activeColorIndicator;
-        [SerializeField] private AudioSource _spraySound;
+        private ParticleSystem _sprayParticles;
+        private AudioSource _spraySound;
+        private bool _isInStandbyMode = false;
+        [SerializeField] private GameObject _sprayCanVisual;
         [SerializeField] private Transform _particleOrientationProvider;
+        [SerializeField] private GameObject _statsMenu;
+        [SerializeField] private Image _colorIndicator;
+        private TextMeshProUGUI _fillIndicator;
+        private CanvasGroup _statsMenuCanvasGroup;
+
+        void Awake()
+        {
+            _sprayParticles = _sprayCanVisual.GetComponentInChildren<ParticleSystem>();
+            _spraySound = _sprayCanVisual.GetComponentInChildren<AudioSource>();
+            _fillIndicator = _statsMenu.GetComponentInChildren<TextMeshProUGUI>();
+            _statsMenuCanvasGroup = _statsMenu.GetComponent<CanvasGroup>();
+        }
 
         public void ActivateFeedback()
         {
@@ -25,12 +41,36 @@ namespace SprayAR
         {
             var mainModule = _sprayParticles.main;
             mainModule.startColor = newColor;
-            _activeColorIndicator.GetComponent<Renderer>().material.color = newColor;
+            _colorIndicator.color = newColor;
+        }
+
+        public void UpdateFillIndicator(float fillAmount)
+        {
+            _fillIndicator.text = $"{fillAmount * 100}%";
+        }
+
+        public void SetToStandby()
+        {
+            _isInStandbyMode = true;
+            DeactivateFeedback();
+            DeactivateStatsMenu();
+        }
+
+        public void ActivateStatsMenu()
+        {
+            if (_isInStandbyMode) return;
+            _statsMenu.SetActive(true);
+            _statsMenuCanvasGroup.DOFade(1, 0.5f);
+        }
+
+        public void DeactivateStatsMenu()
+        {
+            _statsMenuCanvasGroup.DOFade(0, 0.5f).OnComplete(() => _statsMenu.SetActive(false));
         }
 
         void Update()
         {
-            RealignParticles();
+            // RealignParticles();
         }
 
         // Finger tip is too dynamic, using the palm as a reference point. The up vector of the palm faces away from the back of the hand, therefore we need to invert it.

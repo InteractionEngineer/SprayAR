@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace SprayAR
 {
@@ -16,7 +17,7 @@ namespace SprayAR
 
         public void EnterState()
         {
-            // TODO: Deactivate the spray can (visuals, etc.)
+            _stateMachine.FeedbackSystem.DeactivateFeedback();
         }
 
         public void ExitState()

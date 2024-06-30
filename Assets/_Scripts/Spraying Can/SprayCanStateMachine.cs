@@ -22,6 +22,7 @@ namespace SprayAR
             _sprayCanStateEventBinding = new EventBinding<SprayCanStateEvent>(OnSprayCanStateEvent);
             EventBus<SprayCanStateEvent>.Register(_sprayCanStateEventBinding);
             CurrentState = new StandbyState(this);
+            CurrentState.EnterState();
             Debug.Log($"Initial state: {CurrentState.GetType().Name}");
         }
 

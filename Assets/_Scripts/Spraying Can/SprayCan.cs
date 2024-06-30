@@ -53,11 +53,13 @@ namespace SprayAR
         {
             _currentFillLevel = Mathf.Max(_currentFillLevel - amount, 0);
             Debug.Log($"Current fill level: {_currentFillLevel}");
+            _feedbackSystem.UpdateFillIndicator(_currentFillLevel / _maxFillLevel);
         }
 
         public void Refill(float amount)
         {
             _currentFillLevel = Mathf.Min(_currentFillLevel + amount, _maxFillLevel);
+            _feedbackSystem.UpdateFillIndicator(_currentFillLevel / _maxFillLevel);
         }
 
         void Start()

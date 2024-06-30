@@ -11,7 +11,7 @@ namespace SprayAR
 
         void Start()
         {
-            GetComponent<Renderer>().material.color = _sprayCan.SprayColor;
+            // GetComponent<Renderer>().material.color = _sprayCan.SprayColor;
         }
 
         void OnTriggerEnter(Collider other)
