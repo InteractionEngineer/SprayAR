@@ -15,11 +15,10 @@ namespace SprayAR
             }
             else
             {
-                // Debug.Log("SprayingCanStateHandler:: Received message: " + message.Values[0].BoolValue + " " + message.Values[1].IntValue);
                 var isGrabbed = message.Values[0].BoolValue;
-                Debug.Log("Is Grabbed: " + isGrabbed + "Timestamp: " + Time.time);
                 var force = Mathf.Ceil(message.Values[1].IntValue);
-                EventBus<SprayCanStateEvent>.Raise(new SprayCanStateEvent(force, isGrabbed));
+                Debug.Log($"SprayingCanStateHandler:: isGrabbed: {isGrabbed}, force: {force} , time: {Time.time}");
+                EventBus<SprayCanStateEvent>.Raise(new SprayCanStateEvent(force, true));
             }
         }
 
