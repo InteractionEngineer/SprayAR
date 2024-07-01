@@ -13,15 +13,17 @@ namespace SprayAR
         private AudioSource _spraySound;
         private bool _isInStandbyMode = false;
         private float _colorIndicatorMaxHeight;
-        private CanvasGroup _statsMenuCanvasGroup;
         private EventBinding<SprayingCanBatteryEvent> _batteryLevelBinding;
         [SerializeField] private GameObject _sprayCanVisual;
-        [SerializeField] private Transform _particleOrientationProvider;
         [SerializeField] private GameObject _statsMenu;
         [SerializeField] private Image _colorIndicator;
         [SerializeField] private Image _colorBackground;
         [SerializeField] private TextMeshProUGUI _batteryLevelText;
         [SerializeField] private float _colorBackgroundOpacity = 0.4f;
+        [SerializeField] private AudioClip _canRefillSuccessSound;
+
+        [SerializeField] private AudioSource _canRefillProgressSound;
+
 
         void Awake()
         {
@@ -34,6 +36,7 @@ namespace SprayAR
         void Start()
         {
             _batteryLevelBinding = new EventBinding<SprayingCanBatteryEvent>(OnBatteryLevelEvent);
+            EventBus<SprayingCanBatteryEvent>.Register(_batteryLevelBinding);
         }
 
         private void OnBatteryLevelEvent(SprayingCanBatteryEvent @event)
@@ -51,11 +54,13 @@ namespace SprayAR
 
         public void ActivateFeedback()
         {
+            _sprayParticles.Play();
             _spraySound.Play();
         }
 
         public void DeactivateFeedback()
         {
+            _sprayParticles.Stop();
             _spraySound.Stop();
         }
 
@@ -69,7 +74,7 @@ namespace SprayAR
 
         public void UpdateFillIndicator(float percentage)
         {
-            _colorIndicator.rectTransform.sizeDelta = new Vector2(_colorIndicator.rectTransform.sizeDelta.x, _colorIndicatorMaxHeight * percentage);
+            _colorIndicator.rectTransform.sizeDelta = new Vector2(_colorIndicator.rectTransform.sizeDelta.x, _colorIndicatorMaxHeight * percentage / 100);
         }
 
         public void SetToStandby()
@@ -90,6 +95,21 @@ namespace SprayAR
         {
             // _statsMenuCanvasGroup.DOFade(0, 0.5f).OnComplete(() => _statsMenu.SetActive(false));
             _statsMenu.SetActive(false);
+        }
+
+        public void PlayCanRefillSuccessSound()
+        {
+            AudioSource.PlayClipAtPoint(_canRefillSuccessSound, _sprayCanVisual.transform.position);
+        }
+
+        public void PlayCanRefillProgressSound()
+        {
+            _canRefillProgressSound.Play();
+        }
+
+        public void StopCanRefillProgressSound()
+        {
+            _canRefillProgressSound.Stop();
         }
     }
 }

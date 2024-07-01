@@ -8,6 +8,8 @@ namespace SprayAR
 
         private float _progress = 0.0f;
 
+        private float _lastFillTime = 0.0f;
+
         private Color _color;
 
         private SprayCanStateMachine _stateMachine;
@@ -25,18 +27,23 @@ namespace SprayAR
                 _stateMachine.TransitionToState(new IdleState(_stateMachine));
                 return;
             }
+            _lastFillTime = Time.time;
             _progress = 0.0f;
+            _stateMachine.Can.EmptyCan();
+            _stateMachine.FeedbackSystem.PlayCanRefillProgressSound();
             EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEvent.FillColorEventType.Start, _color));
         }
 
         public void ExitState()
         {
-            if (_progress >= 1.0f)
+            EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEvent.FillColorEventType.Stop, _color));
+            _stateMachine.Can.SetSprayColor(_color);
+            _stateMachine.FeedbackSystem.StopCanRefillProgressSound();
+            if (_progress >= 1f)
             {
-                EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEvent.FillColorEventType.Stop, _color));
-                _stateMachine.Can.SetSprayColor(_color);
-                _progress = 0.0f;
+                _stateMachine.FeedbackSystem.PlayCanRefillSuccessSound();
             }
+            _progress = 0.0f;
         }
 
         public void OnSprayCanStateEvent(SprayCanStateEvent sprayCanStateEvent)
@@ -49,8 +56,13 @@ namespace SprayAR
 
         public void Update()
         {
-            _progress += Time.deltaTime * 0.25f;
-            _stateMachine.Can.Refill(Time.deltaTime * 5);
+            if (Time.time - _lastFillTime > 1.0f)
+            {
+                _progress += 0.25f;
+                // Add 25% of the max fill level per second
+                _stateMachine.Can.Refill(25.0f);
+                _lastFillTime = Time.time;
+            }
 
             if (_progress >= 1.0f)
             {
