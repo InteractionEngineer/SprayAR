@@ -12,20 +12,32 @@ namespace SprayAR
 
         void OnEnable()
         {
-            execute();
+            Execute();
         }
 
         void Update()
         {
             if (_continuously)
             {
-                execute();
+                Execute();
             }
         }
 
-        void execute()
+        void Execute()
+        {
+            PositionSelfInReach();
+            OrientateSelfToReference();
+        }
+
+        void PositionSelfInReach()
         {
             transform.position = _reference.position + (_reference.forward * _reachDistance);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z);
+        }
+
+        void OrientateSelfToReference()
+        {
+            transform.LookAt(_reference);
         }
     }
 }
