@@ -1,44 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using SprayAR.General;
 using DG.Tweening;
+using SprayAR.General;
+using UnityEngine;
 
 namespace SprayAR
 {
     public class HandleFill : MonoBehaviour
     {
         [SerializeField] private SprayCan _sprayCan;
+        private SprayColor _sprayColor;
         EventBinding<FillColorEvent> _fillColorEventBinding;
         bool _isFilling = false;
-
+        Vector3 _initialScale;
 
         void Start()
         {
+            _initialScale = transform.localScale;
+            _sprayColor = GetComponent<SprayColor>();
             _fillColorEventBinding = new EventBinding<FillColorEvent>(OnFillColorEvent);
             EventBus<FillColorEvent>.Register(_fillColorEventBinding);
             DOTween.Init();
         }
 
-        void Update()
+        private void OnFillColorEvent(FillColorEvent @event)
         {
-            if (_isFilling)
+            if (@event.Type == FillColorEvent.FillColorEventType.Stop)
             {
-                transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 1f, _sprayCan.FillLevelPercentage/10, 0.5f);
+                if (_isFilling)
+                {
+                    _isFilling = false;
+                    StopFillingAnimation(); // Stop the animation when filling stops
+                }
+            }
+            if (@event.Type == FillColorEvent.FillColorEventType.Start)
+            {
+                if (@event.NewColor == _sprayColor.ColorData)
+                {
+                    _isFilling = true;
+                    StartFillingAnimation(); // Start the animation when filling starts
+                }
             }
         }
 
-        private void OnFillColorEvent(FillColorEvent @event)
+        private void StartFillingAnimation()
         {
-            switch (@event.Type)
-            {
-                case FillColorEvent.FillColorEventType.Start:
-                    _isFilling = true;
-                    break;
-                case FillColorEvent.FillColorEventType.Stop:
-                    _isFilling = false;
-                    break;
-            }
+            if (!_isFilling) return; // Return if not filling
+
+            transform.DOScale(_initialScale * 1.1f, 0.5f).SetLoops(-1, LoopType.Yoyo); // Scale the object up and down
+        }
+
+        private void StopFillingAnimation()
+        {
+            transform.DOKill();
+            transform.localScale = _initialScale;
         }
     }
 }

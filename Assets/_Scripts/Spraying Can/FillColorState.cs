@@ -20,18 +20,23 @@ namespace SprayAR
 
         public void EnterState()
         {
-            EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEvent.FillColorEventType.Start));
+            if (_stateMachine.Can.IsFull && _color == _stateMachine.Can.SprayColor)
+            {
+                _stateMachine.TransitionToState(new IdleState(_stateMachine));
+                return;
+            }
             _progress = 0.0f;
+            EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEvent.FillColorEventType.Start, _color));
         }
 
         public void ExitState()
         {
-            EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEvent.FillColorEventType.Stop));
             if (_progress >= 1.0f)
             {
+                EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEvent.FillColorEventType.Stop, _color));
                 _stateMachine.Can.SetSprayColor(_color);
+                _progress = 0.0f;
             }
-            _progress = 0.0f;
         }
 
         public void OnSprayCanStateEvent(SprayCanStateEvent sprayCanStateEvent)
@@ -42,10 +47,9 @@ namespace SprayAR
             }
         }
 
-        //TODO: Implement color change logic. Maybe needs some refactoring. 
         public void Update()
         {
-            _progress += Time.deltaTime;
+            _progress += Time.deltaTime * 0.25f;
             _stateMachine.Can.Refill(Time.deltaTime * 5);
 
             if (_progress >= 1.0f)

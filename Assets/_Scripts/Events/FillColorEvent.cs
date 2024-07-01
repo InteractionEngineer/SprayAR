@@ -8,10 +8,13 @@ namespace SprayAR
     public struct FillColorEvent : IEvent
     {
         public FillColorEventType Type;
-        public FillColorEvent(FillColorEventType type)
+        public Color NewColor;
+        public FillColorEvent(FillColorEventType type, Color newColor)
         {
             Type = type;
+            NewColor = newColor;
         }
+
         public enum FillColorEventType
         {
             Start,
