@@ -20,7 +20,7 @@ namespace SprayAR
         public float brushSize = 0.1f;
         [SerializeField] private Color brushColor = Color.red;
         [SerializeField] private float brushStrength = 0.4f;
-        [SerializeField] private float maxSprayDistance = 0.5f;
+        [SerializeField] private float maxSprayDistance = 0.8f;
         [SerializeField] private AnimationCurve opacityCurve;
 
         void Awake()
@@ -121,7 +121,7 @@ namespace SprayAR
         {
             float distanceRatio = dist / maxSprayDistance;
             Debug.Log("Distance ratio: " + distanceRatio);
-            return Mathf.Lerp(0.005f, 0.1f, distanceRatio);
+            return Mathf.Lerp(0.001f, 0.07f, distanceRatio);
         }
 
         private Vector2 AdjustBrushSizeForAspectRatio(float radius)

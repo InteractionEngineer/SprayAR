@@ -85,7 +85,7 @@ namespace SprayAR
 
         public void Paint()
         {
-            int hitCount = Physics.RaycastNonAlloc(_nozzleOrigin.position, _nozzleOrigin.forward, raycastHits, 0.75f, mask);
+            int hitCount = Physics.RaycastNonAlloc(_nozzleOrigin.position, _nozzleOrigin.forward, raycastHits, 0.8f, mask);
             if (hitCount == 0)
             {
                 return;
