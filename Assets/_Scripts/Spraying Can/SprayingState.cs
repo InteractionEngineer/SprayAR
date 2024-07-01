@@ -12,6 +12,7 @@ namespace SprayAR
         private SprayCanStateMachine _stateMachine;
         private SprayCanFeedbackSystem _feedbackSystem;
 
+        private float _lastSprayTime = 0.0f;
         private float _sprayForce = 0.0f;
 
         public SprayingState(SprayCanStateMachine stateMachine, SprayCanFeedbackSystem feedbackSystem)
@@ -22,6 +23,7 @@ namespace SprayAR
 
         public void EnterState()
         {
+            _lastSprayTime = Time.time;
             StartSpraying();
         }
 
@@ -40,6 +42,7 @@ namespace SprayAR
             {
                 if (sprayCanStateEvent.Force > 0.0f)
                 {
+                    _lastSprayTime = Time.time;
                     _sprayForce = sprayCanStateEvent.Force;
                     if (_stateMachine.Can.IsEmpty)
                     {
@@ -55,6 +58,10 @@ namespace SprayAR
 
         public void Update()
         {
+            if (Time.time - _lastSprayTime > 0.2f)
+            {
+                _stateMachine.TransitionToState(new IdleState(_stateMachine));
+            }
             _stateMachine.Spray(_sprayForce * 10);
         }
 
