@@ -9,8 +9,8 @@ namespace SprayAR
         [SerializeField] private Transform _reference;
         [SerializeField] private float _reachDistance = 0.3f;
         [SerializeField] private bool _continuously = false;
-       
-        void Start()
+
+        void OnEnable()
         {
             execute();
         }
@@ -25,7 +25,7 @@ namespace SprayAR
 
         void execute()
         {
-         transform.position = _reference.position + (_reference.forward * _reachDistance);   
+            transform.position = _reference.position + (_reference.forward * _reachDistance);
         }
     }
 }

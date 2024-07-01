@@ -9,7 +9,7 @@ namespace SprayAR
         [SerializeField] private Transform _reference;
         [SerializeField] private bool _continuously = false;
 
-        void Start()
+        void OnEnable()
         {
             execute();
         }
