@@ -21,7 +21,7 @@ namespace SprayAR
 
             _sprayCanStateEventBinding = new EventBinding<SprayCanStateEvent>(OnSprayCanStateEvent);
             EventBus<SprayCanStateEvent>.Register(_sprayCanStateEventBinding);
-            CurrentState = new StandbyState(this);
+            CurrentState = new IdleState(this);
             CurrentState.EnterState();
             Debug.Log($"Initial state: {CurrentState.GetType().Name}");
         }
@@ -38,8 +38,8 @@ namespace SprayAR
 
         public void Spray(float force)
         {
-            Can.UseSpray(Time.deltaTime * force);
-            Can.Paint();
+            Can.UseSpray(Time.deltaTime / 2);
+            Can.Paint(force);
         }
 
         public void TransitionToState(ISprayCanState newState)

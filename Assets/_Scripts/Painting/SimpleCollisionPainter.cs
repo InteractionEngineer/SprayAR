@@ -7,38 +7,16 @@ namespace SprayAR
         Vector3 _lastPaintPosition;
         void Update()
         {
-
-            float distanceToLastPaint = Vector3.Distance(_lastPaintPosition, transform.position);
-
-            // if (distanceToLastPaint > 0.2f)
-            // {
-            //     int steps = Mathf.CeilToInt(distanceToLastPaint / 0.5f);
-            //     for (int i = 0; i < steps; i++)
-            //     {
-            //         Vector3 pos = Vector3.Lerp(_lastPaintPosition, transform.position, i / (float)steps);
-            //         RaycastHit interpolatedHit;
-            //         if (Physics.Raycast(pos, transform.forward, out interpolatedHit, 0.75f))
-            //         {
-            //             if (interpolatedHit.collider.GetComponent<ShaderPainter>() != null)
-            //             {
-            //                 Vector2 pixelUV = interpolatedHit.textureCoord;
-            //                 float dist = Vector3.Distance(interpolatedHit.point, transform.position);
-            //                 interpolatedHit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist, Color.red);
-            //             }
-            //         }
-            //     }
-            // }
-            RaycastHit[] hits = new RaycastHit[1]; 
-            Physics.RaycastNonAlloc(transform.position, transform.forward, hits, 0.75f);
+            RaycastHit[] hits = new RaycastHit[1];
+            Physics.RaycastNonAlloc(transform.position, transform.forward, hits, 0.8f);
             RaycastHit hit = hits[0];
             if (hit.collider != null)
             {
                 if (hit.collider.GetComponent<ShaderPainter>() != null)
                 {
-                    _lastPaintPosition = transform.position;
                     Vector2 pixelUV = hit.textureCoord;
                     float dist = Vector3.Distance(hit.point, hit.transform.position);
-                    hit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist, Color.red);
+                    hit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist, Color.red, 1f);
                 }
             }
         }

@@ -123,7 +123,7 @@ MonoBehaviour:
   brushSize: 0.01
   brushColor: {r: 0, g: 0.41038322, b: 1, a: 1}
   brushStrength: 0.1
-  maxSprayDistance: 0.5
+  maxSprayDistance: 0.8
   opacityCurve:
     serializedVersion: 2
     m_Curve:

@@ -46,7 +46,7 @@ namespace SprayAR
                     _sprayForce = sprayCanStateEvent.Force;
                     if (_stateMachine.Can.IsEmpty)
                     {
-                        // TODO: Transition to Empty state, implement Empty state first
+                        _stateMachine.TransitionToState(new EmptyState(_stateMachine));
                     }
                 }
                 else

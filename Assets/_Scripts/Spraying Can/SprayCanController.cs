@@ -42,7 +42,7 @@ namespace SprayAR
                 {
                     Vector2 pixelUV = hit.textureCoord;
                     float dist = Vector3.Distance(hit.point, transform.position);
-                    hit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist, _brushColor);
+                    hit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist, _brushColor, 1f);
                 }
             }
         }

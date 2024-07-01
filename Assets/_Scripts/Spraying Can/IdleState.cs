@@ -15,9 +15,11 @@ namespace SprayAR
 
         public void EnterState()
         {
-            // TODO: Ensure the spray can is visible, but not spraying
-
             // If can is empty, immediately transition to Empty state
+            if (_stateMachine.Can.IsEmpty)
+            {
+                _stateMachine.TransitionToState(new EmptyState(_stateMachine));
+            }
         }
 
         public void ExitState()
@@ -29,15 +31,14 @@ namespace SprayAR
         {
             if (!sprayCanStateEvent.IsGrabbed)
             {
-                //TODO: Transition to Standby state
                 _stateMachine.TransitionToState(new StandbyState(_stateMachine));
             }
             else
             {
-            if (sprayCanStateEvent.Force > 0.0f)
-            {
-                _stateMachine.TransitionToState(new SprayingState(_stateMachine, _stateMachine.FeedbackSystem));
-            }
+                if (sprayCanStateEvent.Force > 0.0f)
+                {
+                    _stateMachine.TransitionToState(new SprayingState(_stateMachine, _stateMachine.FeedbackSystem));
+                }
             }
         }
 

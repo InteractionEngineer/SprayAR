@@ -20,10 +20,10 @@ namespace SprayAR
 
         void OnButtonPressed(InputAction.CallbackContext value)
         {
-            if (value.ReadValue<float>() > 0.5f)
+            if (value.ReadValue<float>() > 0.1f)
             {
                 float force = value.ReadValue<float>();
-                EventBus<SprayCanStateEvent>.Raise(new SprayCanStateEvent(force, true));
+                EventBus<SprayCanStateEvent>.Raise(new SprayCanStateEvent(force * 3, true));
             }
             else
             {

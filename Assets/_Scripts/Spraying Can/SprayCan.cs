@@ -7,7 +7,7 @@ namespace SprayAR
     public class SprayCan : MonoBehaviour
     {
         private float _currentFillLevel;
-        private Color _sprayColor = Color.blue;
+        [SerializeField] private Color _sprayColor = Color.blue;
         private SprayCanStateMachine _stateMachine;
         [SerializeField] private float _maxFillLevel;
         [SerializeField] private Transform _nozzleOrigin;
@@ -19,7 +19,7 @@ namespace SprayAR
 
         public float CurrentFillLevel => _currentFillLevel;
 
-        public int FillLevelPercentage => (int)(_currentFillLevel / _maxFillLevel);
+        public int FillLevelPercentage => (int)(_currentFillLevel / _maxFillLevel * 100);
 
         public float MaxFillLevel => _maxFillLevel;
 
@@ -30,8 +30,7 @@ namespace SprayAR
 
         public void InitiateColorFill(Color color)
         {
-            // TODO: Add empty state as well, remove check for StandbyState (currently necessary for testing purposes)
-            if (_stateMachine.CurrentState is IdleState or StandbyState)
+            if (_stateMachine.CurrentState is IdleState or EmptyState)
                 _stateMachine.TransitionToState(new FillColorState(_stateMachine, color));
         }
 
@@ -54,13 +53,12 @@ namespace SprayAR
         public void UseSpray(float amount)
         {
             _currentFillLevel = Mathf.Max(_currentFillLevel - amount, 0);
-            Debug.Log($"Current fill level: {_currentFillLevel}");
             _feedbackSystem.UpdateFillIndicator(FillLevelPercentage);
         }
 
-        public void Refill(float amount)
+        public void Refill(float percentageAmount)
         {
-            _currentFillLevel = Mathf.Min(_currentFillLevel + amount, _maxFillLevel);
+            _currentFillLevel = Mathf.Min(_currentFillLevel + _maxFillLevel * percentageAmount / 100, _maxFillLevel);
             _feedbackSystem.UpdateFillIndicator(FillLevelPercentage);
         }
 
@@ -83,7 +81,7 @@ namespace SprayAR
             _stateMachine.ExecuteStateUpdate();
         }
 
-        public void Paint()
+        public void Paint(float force)
         {
             int hitCount = Physics.RaycastNonAlloc(_nozzleOrigin.position, _nozzleOrigin.forward, raycastHits, 0.8f, mask);
             if (hitCount == 0)
@@ -98,7 +96,7 @@ namespace SprayAR
                 {
                     Vector2 pixelUV = hit.textureCoord;
                     float dist = Vector3.Distance(hit.point, _nozzleOrigin.position);
-                    hit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist, SprayColor);
+                    hit.collider.GetComponent<ShaderPainter>().Paint(pixelUV, dist, SprayColor, force);
                 }
             }
         }

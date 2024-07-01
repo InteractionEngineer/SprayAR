@@ -25,8 +25,8 @@ namespace SprayAR
 
         void Awake()
         {
-            // InitializeCanvas();
             _renderer = GetComponent<Renderer>();
+            // InitializeCanvas();
         }
 
         public void InitializeCanvas()
@@ -78,7 +78,7 @@ namespace SprayAR
             _renderer.material.mainTexture = renderTexture;
         }
 
-        public void Paint(Vector2 uv, float dist, Color brushColor)
+        public void Paint(Vector2 uv, float dist, Color brushColor, float force)
         {
             if (Time.time - lastBrushTime > 0.2f)
             {
@@ -91,9 +91,8 @@ namespace SprayAR
             // Set shader parameters
             float radius = CalculatePaintingRadius(dist);
             brushSize = radius;
-            float opacity = CalculateOpacity(dist);
-            //TODO: Add brush strength based on applied force to spray can
-            brushStrength = opacity;
+            brushStrength = CalculateOpacity(dist, force);
+
 
             Vector2 adjustedBrushSize = AdjustBrushSizeForAspectRatio(radius);
 
@@ -120,7 +119,7 @@ namespace SprayAR
         private float CalculatePaintingRadius(float dist)
         {
             float distanceRatio = dist / maxSprayDistance;
-            Debug.Log("Distance ratio: " + distanceRatio);
+            // Debug.Log("Distance ratio: " + distanceRatio);
             return Mathf.Lerp(0.001f, 0.07f, distanceRatio);
         }
 
@@ -141,10 +140,15 @@ namespace SprayAR
             }
         }
 
-        private float CalculateOpacity(float dist)
+        private float CalculateOpacity(float dist, float force)
         {
             float distanceRatio = dist / maxSprayDistance;
-            return opacityCurve.Evaluate(distanceRatio);
+            float opacity = opacityCurve.Evaluate(distanceRatio);
+            // Spraying Can force is in range of 1 to 3, so we divide it by 3 to get a value between 0 and 1.
+            float forceAdjustedOpacity = opacity * (force / 3f);
+            // With increased distance, the opacity should decrease. Relationship of distance and opacity is inverse.
+            forceAdjustedOpacity /= distanceRatio;
+            return Mathf.Clamp(forceAdjustedOpacity, 0.1f, 1f);
         }
 
         private void OnDestroy()
