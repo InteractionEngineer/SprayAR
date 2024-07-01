@@ -7,7 +7,6 @@ namespace SprayAR
         public static readonly string INState = $"{Root}/state";
         public static readonly string INPing = $"{Root}/ping";
         public static readonly string OUTRefill = $"{Root}/Refill";
-        public static readonly string OUTCanIsEmpty = $"{Root}/canIsEmpty";
-        public static readonly string OUTCanIsFull = $"{Root}/canIsFull";
+        public static readonly string INBattery = $"{Root}/batterycharge";
     }
 }

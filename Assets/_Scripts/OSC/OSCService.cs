@@ -39,9 +39,11 @@ namespace SprayAR
 
             SprayingCanStateHandler sprayingCanStateHandler = new();
             SprayingCanPingHandler sprayingCanPingHandler = new();
+            SprayingCanBatteryHandler sprayingCanBatteryHandler = new();
 
             _dispatcher.RegisterHandler(OSCRoutes.INState, sprayingCanStateHandler);
             _dispatcher.RegisterHandler(OSCRoutes.INPing, sprayingCanPingHandler);
+            _dispatcher.RegisterHandler(OSCRoutes.INBattery, sprayingCanBatteryHandler);
 
             _transmitter.RemoteHost = _sprayingCanIP;
             _transmitter.RemotePort = _sprayingCanPort;
