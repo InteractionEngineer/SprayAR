@@ -17,7 +17,6 @@ namespace SprayAR
         private float lastBrushTime;
         private Vector2 lastBrushPos;
 
-        public float brushSize = 0.1f;
         [SerializeField] private Color brushColor = Color.red;
         [SerializeField] private float brushStrength = 0.4f;
         [SerializeField] private float maxSprayDistance = 0.8f;
@@ -90,11 +89,8 @@ namespace SprayAR
             }
             // Set shader parameters
             float radius = CalculatePaintingRadius(dist);
-            brushSize = radius;
-            brushStrength = CalculateOpacity(dist, force);
-
-
             Vector2 adjustedBrushSize = AdjustBrushSizeForAspectRatio(radius);
+            brushStrength = CalculateOpacity(dist, force);
 
             paintMaterial.SetVector("_BrushUV", new Vector4(uv.x, uv.y, 0, 0));
             paintMaterial.SetFloat("_BrushSizeX", adjustedBrushSize.x);
@@ -146,8 +142,7 @@ namespace SprayAR
             float opacity = opacityCurve.Evaluate(distanceRatio);
             // Spraying Can force is in range of 1 to 3, so we divide it by 3 to get a value between 0 and 1.
             float forceAdjustedOpacity = opacity * (force / 3f);
-            // With increased distance, the opacity should decrease. Relationship of distance and opacity is inverse.
-            forceAdjustedOpacity /= distanceRatio;
+            Debug.Log("Force adjusted opacity: " + forceAdjustedOpacity);
             return Mathf.Clamp(forceAdjustedOpacity, 0.1f, 1f);
         }
 

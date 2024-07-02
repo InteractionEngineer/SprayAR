@@ -23,21 +23,22 @@ namespace SprayAR
 
         private void OnFillColorEvent(FillColorEvent @event)
         {
-            if (@event.Type == FillColorEvent.FillColorEventType.Stop)
+            switch (@event.Type)
             {
-                if (_isFilling)
-                {
-                    _isFilling = false;
-                    StopFillingAnimation(); // Stop the animation when filling stops
-                }
-            }
-            if (@event.Type == FillColorEvent.FillColorEventType.Start)
-            {
-                if (@event.NewColor == _sprayColor.ColorData)
-                {
-                    _isFilling = true;
-                    StartFillingAnimation(); // Start the animation when filling starts
-                }
+                case FillColorEventType.Stop:
+                    if (_isFilling)
+                    {
+                        _isFilling = false;
+                        StopFillingAnimation(); // Stop the animation when filling stops
+                    }
+                    break;
+                case FillColorEventType.Start:
+                    if (@event.NewColor == _sprayColor.ColorData)
+                    {
+                        _isFilling = true;
+                        StartFillingAnimation(); // Start the animation when filling starts
+                    }
+                    break;
             }
         }
 

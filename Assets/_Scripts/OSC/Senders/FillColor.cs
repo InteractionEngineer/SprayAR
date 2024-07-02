@@ -1,17 +1,14 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using extOSC;
 using SprayAR.General;
-using UnityEngine;
 
 namespace SprayAR
 {
     public class FillColor : OSCSender
     {
         EventBinding<FillColorEvent> _fillColorEventBinding;
-        String oscMessage = "";
         public OSCTransmitter Transmitter { get; private set; }
+        public FillColorEventType EventType { get; private set; }
 
         public FillColor(OSCTransmitter transmitter)
         {
@@ -22,23 +19,25 @@ namespace SprayAR
 
         private void OnFillColorEvent(FillColorEvent @event)
         {
-            switch (@event.Type)
-            {
-                case FillColorEvent.FillColorEventType.Start:
-                    oscMessage = "Start";
-                    break;
-                case FillColorEvent.FillColorEventType.Stop:
-                    oscMessage = "Stop";
-                    break;
-            }
+            EventType = @event.Type;
             Send(Transmitter);
         }
 
         public override OSCMessage CreateMessage()
         {
-            OSCMessage message = new OSCMessage(OSCRoutes.OUTRefill);
-            message.AddValue(OSCValue.String(oscMessage));
-            return message;
+            switch (EventType)
+            {
+                case FillColorEventType.Stop:
+                    var message = new OSCMessage(OSCRoutes.OUTRefillStop);
+                    message.AddValue(OSCValue.String("Stop"));
+                    return message;
+                case FillColorEventType.Start:
+                    var message2 = new OSCMessage(OSCRoutes.OUTRefillStart);
+                    message2.AddValue(OSCValue.String("Start"));
+                    return message2;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

@@ -62,7 +62,7 @@ namespace SprayAR
             {
                 _stateMachine.TransitionToState(new IdleState(_stateMachine));
             }
-            _stateMachine.Spray(_sprayForce * 10);
+            _stateMachine.Spray(_sprayForce);
         }
 
         private void StartSpraying()

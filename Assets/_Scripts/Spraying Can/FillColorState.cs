@@ -31,12 +31,14 @@ namespace SprayAR
             _progress = 0.0f;
             _stateMachine.Can.EmptyCan();
             _stateMachine.FeedbackSystem.PlayCanRefillProgressSound();
-            EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEvent.FillColorEventType.Start, _color));
+            EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEventType.Start, _color));
+            EventBus<FillStateEvent>.Raise(new FillStateEvent(FillStateType.Empty));
         }
 
         public void ExitState()
         {
-            EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEvent.FillColorEventType.Stop, _color));
+            EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEventType.Stop, _color));
+            EventBus<FillStateEvent>.Raise(new FillStateEvent(FillStateType.Full));
             _stateMachine.Can.SetSprayColor(_color);
             _stateMachine.FeedbackSystem.StopCanRefillProgressSound();
             if (_progress >= 1f)

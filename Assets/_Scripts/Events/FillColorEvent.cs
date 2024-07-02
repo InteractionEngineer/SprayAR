@@ -15,10 +15,10 @@ namespace SprayAR
             NewColor = newColor;
         }
 
-        public enum FillColorEventType
-        {
-            Start,
-            Stop
-        }
+    }
+    public enum FillColorEventType
+    {
+        Start,
+        Stop
     }
 }

@@ -24,25 +24,24 @@ namespace SprayAR
 
         [SerializeField] private AudioSource _canRefillProgressSound;
 
-
         void Awake()
         {
             _sprayParticles = _sprayCanVisual.GetComponentInChildren<ParticleSystem>();
             _spraySound = _sprayCanVisual.GetComponentInChildren<AudioSource>();
             // _statsMenuCanvasGroup = _statsMenu.GetComponent<CanvasGroup>();
-            _colorIndicatorMaxHeight = _colorIndicator.rectTransform.sizeDelta.y;
         }
 
         void Start()
         {
+            _colorIndicatorMaxHeight = _colorIndicator.rectTransform.sizeDelta.y;
             _batteryLevelBinding = new EventBinding<SprayingCanBatteryEvent>(OnBatteryLevelEvent);
             EventBus<SprayingCanBatteryEvent>.Register(_batteryLevelBinding);
         }
 
         private void OnBatteryLevelEvent(SprayingCanBatteryEvent @event)
         {
-            // Voltage is below 2V, indicating empty battery.
-            if (@event.BatteryLevel < 2f)
+            // Voltage is below 3V, indicating empty battery.
+            if (@event.BatteryLevel < 3f)
             {
                 _batteryLevelText.gameObject.SetActive(true);
             }
@@ -69,7 +68,8 @@ namespace SprayAR
             var mainModule = _sprayParticles.main;
             mainModule.startColor = newColor;
             _colorIndicator.color = newColor;
-            _colorBackground.color = new Color(newColor.r, newColor.g, newColor.b, _colorBackgroundOpacity);
+            newColor.a = _colorBackgroundOpacity;
+            _colorBackground.color = newColor;
         }
 
         public void UpdateFillIndicator(float percentage)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using SprayAR.General;
 using UnityEngine;
 
 namespace SprayAR
@@ -15,7 +16,7 @@ namespace SprayAR
 
         public void EnterState()
         {
-
+            EventBus<FillStateEvent>.Raise(new FillStateEvent(FillStateType.Empty));
         }
 
         public void ExitState()
@@ -28,7 +29,7 @@ namespace SprayAR
 
         public void Update()
         {
-            
+
         }
     }
 }
