@@ -77,6 +77,13 @@ namespace SprayAR
             _renderer.material.mainTexture = renderTexture;
         }
 
+        public void ResetCanvas()
+        {
+            RenderTexture.active = renderTexture;
+            GL.Clear(true, true, Color.clear);
+            RenderTexture.active = null;
+        }
+
         public void Paint(Vector2 uv, float dist, Color brushColor, float force)
         {
             if (Time.time - lastBrushTime > 0.2f)
