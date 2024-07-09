@@ -9,6 +9,7 @@ namespace SprayAR
 {
     public class SprayingState : ISprayCanState
     {
+        private const float Duration = 0.2f;
         private SprayCanStateMachine _stateMachine;
         private SprayCanFeedbackSystem _feedbackSystem;
 
@@ -44,6 +45,8 @@ namespace SprayAR
                 {
                     _lastSprayTime = Time.time;
                     _sprayForce = sprayCanStateEvent.Force;
+                    _feedbackSystem.TransitionSpraySoundVolume(Mathf.Clamp(_sprayForce / 3.0f, 0.4f, 1.0f), Duration);
+
                     if (_stateMachine.Can.IsEmpty)
                     {
                         _stateMachine.TransitionToState(new EmptyState(_stateMachine));

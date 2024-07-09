@@ -18,18 +18,17 @@ namespace SprayAR
         [SerializeField] private GameObject _statsMenu;
         [SerializeField] private Image _colorIndicator;
         [SerializeField] private Image _colorBackground;
-        [SerializeField] private TextMeshProUGUI _batteryLevelText;
+        [SerializeField] private TextMeshProUGUI _batteryLevelEmptyText;
         [SerializeField] private float _colorBackgroundOpacity = 0.4f;
         [SerializeField] private AudioClip _canRefillSuccessSound;
         [SerializeField] private AudioSource _canRefillProgressSound;
         [SerializeField] private Sprite[] _batteryLevelSprites;
-        [SerializeField] private Image _batteryLevelImage;
+        [SerializeField] private TextMeshProUGUI _batteryLevelText;
 
         void Awake()
         {
             _sprayParticles = _sprayCanVisual.GetComponentInChildren<ParticleSystem>();
             _spraySound = _sprayCanVisual.GetComponentInChildren<AudioSource>();
-            // _statsMenuCanvasGroup = _statsMenu.GetComponent<CanvasGroup>();
         }
 
         void Start()
@@ -41,29 +40,16 @@ namespace SprayAR
 
         private void OnBatteryLevelEvent(SprayingCanBatteryEvent @event)
         {
-            // Voltage is below 3V, indicating empty battery.
-            switch (@event.BatteryLevel)
+            // Voltage is below 3.5V, indicating empty battery.
+            if (@event.BatteryLevel < 3.5f)
             {
-                case < 3f:
-                    _batteryLevelText.gameObject.SetActive(true);
-                    break;
-                case < 3.2f:
-                    _batteryLevelImage.sprite = _batteryLevelSprites[0];
-                    _batteryLevelImage.color = Color.red; // Almost empty battery
-                    _batteryLevelText.gameObject.SetActive(false);
-                    break;
-                case < 3.3f:
-                    _batteryLevelImage.sprite = _batteryLevelSprites[1];
-                    _batteryLevelImage.color = Color.yellow; // Low battery
-                    _batteryLevelText.gameObject.SetActive(false);
-                    break;
-                case < 3.4f:
-                    _batteryLevelImage.sprite = _batteryLevelSprites[2];
-                    _batteryLevelImage.color = Color.green; // Full battery
-                    _batteryLevelText.gameObject.SetActive(false);
-                    break;
-                default:
-                    break;
+                _batteryLevelText.text = $"Niedriger Batteriestand: {@event.BatteryLevel:F2}V";
+                _batteryLevelEmptyText.gameObject.SetActive(true);
+            }
+            else
+            {
+                _batteryLevelEmptyText.gameObject.SetActive(false);
+                _batteryLevelText.text = $"Batteriestand: {@event.BatteryLevel:F2}V";
             }
         }
 
@@ -77,6 +63,11 @@ namespace SprayAR
         {
             _sprayParticles.Stop();
             _spraySound.Stop();
+        }
+
+        public void TransitionSpraySoundVolume(float targetVolume, float duration)
+        {
+            _spraySound.DOFade(targetVolume, duration);
         }
 
         public void UpdateSprayColor(Color newColor)
@@ -104,7 +95,6 @@ namespace SprayAR
         {
             if (_isInStandbyMode) return;
             _statsMenu.SetActive(true);
-
         }
 
         public void DeactivateStatsMenu()
