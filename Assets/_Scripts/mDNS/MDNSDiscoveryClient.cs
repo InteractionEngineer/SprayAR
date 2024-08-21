@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 using Zeroconf;
 namespace SprayAR
 {
+    /// <summary>
+    /// In the future, this class will be used to discover services on the local network using mDNS.
+    /// It is currently not used in the project, since it's unclear whether or not the Meta Quest platform supports mDNS. 
+    /// </summary>
     public class MDNSDiscoveryClient : MonoBehaviour
     {
         private List<string> _discoveredServices = new List<string>();
@@ -25,6 +28,7 @@ namespace SprayAR
             await DiscoverServices();
         }
 
+        //TODO: The correct service type (possibly user defined) should be used here. 
         private async Task DiscoverServices()
         {
             string serviceType = "_http._tcp.local.";
@@ -45,7 +49,7 @@ namespace SprayAR
                 }
             }
 #if UNITY_ANDROID && !UNITY_EDITOR
-            // ReleaseMulticastLock();
+            ReleaseMulticastLock();
 #endif
             foreach (var service in _discoveredServices)
             {
@@ -67,7 +71,10 @@ namespace SprayAR
             }
         }
 
-
+        /// <summary>
+        /// Acquires a multicast lock on Android to allow mDNS discovery to work.
+        /// This is necessary ONLY on Android.
+        /// </summary>
         void MulticastLock()
         {
             try
@@ -89,6 +96,10 @@ namespace SprayAR
             }
         }
 
+        /// <summary>
+        /// Call this method to release the multicast lock. 
+        /// Not releasing the lock likely causes battery drain.
+        /// </summary>
         void ReleaseMulticastLock()
         {
             try

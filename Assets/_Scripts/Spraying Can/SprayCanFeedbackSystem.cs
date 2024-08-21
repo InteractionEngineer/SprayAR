@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 namespace SprayAR
 {
+    /// <summary>
+    /// This class is responsible for providing feedback to the user when using the spray can.
+    /// </summary>
     public class SprayCanFeedbackSystem : MonoBehaviour
     {
         private ParticleSystem _sprayParticles;
@@ -65,11 +68,18 @@ namespace SprayAR
             _spraySound.Stop();
         }
 
+        /// <summary>
+        /// Transitions the volume of the spray sound to allow for smooth volume changes.
+        /// </summary>
         public void TransitionSpraySoundVolume(float targetVolume, float duration)
         {
             _spraySound.DOFade(targetVolume, duration);
         }
 
+        /// <summary>
+        /// Updates the visuals to reflect the new color of the spray can.
+        /// </summary>
+        /// <param name="newColor">The new color to spray.</param>
         public void UpdateSprayColor(Color newColor)
         {
             var mainModule = _sprayParticles.main;
@@ -79,11 +89,17 @@ namespace SprayAR
             _colorBackground.color = newColor;
         }
 
+        /// <summary>
+        /// Updates the fill indicator on the hand attached UI to reflect the current fill level of the spray can.
         public void UpdateFillIndicator(float percentage)
         {
             _colorIndicator.rectTransform.sizeDelta = new Vector2(_colorIndicator.rectTransform.sizeDelta.x, _colorIndicatorMaxHeight * percentage / 100);
         }
 
+        /// <summary>
+        /// Sets the feedback system to standby mode, where no feedback is provided.
+        /// This is supposed to be used in case the isGrabbed value is incorporated in the future.
+        /// </summary>
         public void SetToStandby()
         {
             _isInStandbyMode = true;
@@ -99,7 +115,6 @@ namespace SprayAR
 
         public void DeactivateStatsMenu()
         {
-            // _statsMenuCanvasGroup.DOFade(0, 0.5f).OnComplete(() => _statsMenu.SetActive(false));
             _statsMenu.SetActive(false);
         }
 

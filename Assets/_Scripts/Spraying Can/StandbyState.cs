@@ -1,11 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using UnityEngine;
-
 namespace SprayAR
 {
+    /// <summary>
+    /// The state of the spraying can when it isn't grabbed.
+    /// This is currently not used due to hardware limitations. See documentation for further information.
+    /// </summary>
     public class StandbyState : ISprayCanState
     {
         private SprayCanStateMachine _stateMachine;

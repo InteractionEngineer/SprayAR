@@ -1,0 +1,19 @@
+@startuml
+[*] --> IdleState : Initial State
+
+IdleState --> EmptyState : Can is empty
+IdleState --> StandbyState : SprayCanStateEvent.IsGrabbed == false
+IdleState --> SprayingState : SprayCanStateEvent.Force > 0.0f
+
+EmptyState --> FillColorState : User moves can into color field
+
+FillColorState --> IdleState : Can is full and color matches
+FillColorState --> StandbyState : SprayCanStateEvent.IsGrabbed == false
+
+SprayingState --> EmptyState : Can is empty
+SprayingState --> IdleState : SprayCanStateEvent.Force == 0.0f
+SprayingState --> StandbyState : SprayCanStateEvent.IsGrabbed == false
+
+StandbyState --> IdleState : SprayCanStateEvent.IsGrabbed == true
+
+@enduml

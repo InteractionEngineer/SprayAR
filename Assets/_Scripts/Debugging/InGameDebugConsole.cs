@@ -46,6 +46,7 @@ namespace SprayAR
 
         /// <summary>
         /// Updates the console text by joining the log messages with newlines.
+        /// Deletes the first message if the log messages exceed 20.
         /// </summary>
         private void UpdateConsoleText()
         {

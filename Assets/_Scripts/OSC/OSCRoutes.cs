@@ -1,6 +1,8 @@
-// Purpose: Contains the OSC routes for the SprayAR project.
 namespace SprayAR
 {
+    /// <summary>
+    ///  Contains the OSC routes for the SprayAR project.
+    /// </summary>
     public static class OSCRoutes
     {
         public static readonly string Root = "/sprayar/microcontroller";

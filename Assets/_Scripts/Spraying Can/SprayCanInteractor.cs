@@ -5,6 +5,10 @@ using UnityEngine;
 
 namespace SprayAR
 {
+    /// <summary>
+    /// Triggers the spray can to fill with a color when the player enters the trigger.
+    /// Is attached to the spray can.
+    /// </summary>
     public class SprayCanInteractor : MonoBehaviour
     {
         [SerializeField] private SprayCan _sprayCan;

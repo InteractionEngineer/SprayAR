@@ -4,8 +4,18 @@ using UnityEngine;
 
 namespace SprayAR
 {
+    /// <summary>
+    /// Handles messages sent on the spray button OSC address for the spraying can.
+    /// See <see cref="OSCRoutes"/> for the address.
+    /// </summary>
     public class SprayingCanStateHandler : IOSCAdressHandler
     {
+        /// <summary>
+        /// Raises an event with the current state of the spray can. 
+        /// State consists of the force applied to the nozzle head and whether the spray can is grabbed. 
+        /// If the message does not contain 2 values, logs a warning.
+        /// NOTE: isGrabbed is not used in the current implementation, due to hardware limitations. See documentation for more information.
+        /// </summary>
         public void HandleMessage(OSCMessage message)
         {
             if (message.Values.Count != 2)

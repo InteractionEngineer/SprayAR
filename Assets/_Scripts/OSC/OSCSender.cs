@@ -9,7 +9,7 @@ namespace SprayAR
     public abstract class OSCSender
     {
         /// <summary>
-        /// Creates an <see cref="OSCMessage"/> to be sent, containing address and data.
+        /// Factory Method that creates an <see cref="OSCMessage"/> to be sent, containing address and data.
         /// </summary>
         /// <returns>The created <see cref="OSCMessage"/></returns> 
         public abstract OSCMessage CreateMessage();

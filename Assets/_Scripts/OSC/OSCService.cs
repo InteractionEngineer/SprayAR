@@ -6,6 +6,7 @@ namespace SprayAR
 {
     /// <summary>
     /// Represents a service for handling OSC (Open Sound Control) communication.
+    /// Central hub for sending and receiving OSC messages. Delegates received messages to the appropriate handlers using an <see cref="OSCHandlerDispatcher"/>.
     /// </summary>
     public class OSCService : MonoBehaviour
     {

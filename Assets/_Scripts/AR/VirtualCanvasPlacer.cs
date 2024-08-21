@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.XR.ARFoundation;
 
 namespace SprayAR
@@ -16,6 +15,7 @@ namespace SprayAR
 
         IEnumerator Start()
         {
+            // While ARPlaneManager is not ready, wait. Otherwise no planes will be available
             yield return new WaitForSeconds(1);
             foreach (var plane in _arPlaneManager.trackables)
             {
@@ -30,7 +30,6 @@ namespace SprayAR
                 canvas.ResetCanvas();
             }
         }
-
 
         void PlaceVirtualPlane(ARPlane plane)
         {

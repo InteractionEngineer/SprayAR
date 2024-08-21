@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace SprayAR
 {
+    /// <summary>
+    /// The state of the spray can when it is filling up with a new color.
+    /// </summary>
     public class FillColorState : ISprayCanState
     {
 
@@ -20,6 +23,11 @@ namespace SprayAR
             _color = color;
         }
 
+        /// <summary>
+        /// First, check if the can is full and the color is the same as the one being filled.
+        /// If so, transition to the idle state.
+        /// Otherwise, start filling the can with the new color.
+        /// </summary>
         public void EnterState()
         {
             if (_stateMachine.Can.IsFull && _color == _stateMachine.Can.SprayColor)
@@ -35,6 +43,11 @@ namespace SprayAR
             EventBus<FillStateEvent>.Raise(new FillStateEvent(FillStateType.Empty));
         }
 
+        /// <summary>
+        /// First, stop filling the can with the new color.
+        /// Then, set the spray color of the can to the new color.
+        /// Finally, stop the can refill progress sound and play the can refill success sound if the can is full.
+        /// </summary>
         public void ExitState()
         {
             EventBus<FillColorEvent>.Raise(new FillColorEvent(FillColorEventType.Stop, _color));
@@ -56,6 +69,10 @@ namespace SprayAR
             }
         }
 
+        /// <summary>
+        /// Update the fill progress of the can.
+        /// Currently, the can fills up 25% of the max fill level per second.
+        /// </summary>
         public void Update()
         {
             if (Time.time - _lastFillTime > 1.0f)

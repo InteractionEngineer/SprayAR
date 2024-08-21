@@ -5,6 +5,10 @@ using UnityEngine;
 
 namespace SprayAR
 {
+    /// <summary>
+    /// The state of the spray can when it is empty.
+    /// Doesn't perform any actions at the moment.
+    /// </summary>
     public class EmptyState : ISprayCanState
     {
         private SprayCanStateMachine _stateMachine;

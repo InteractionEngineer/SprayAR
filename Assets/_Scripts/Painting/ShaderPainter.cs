@@ -25,35 +25,33 @@ namespace SprayAR
         void Awake()
         {
             _renderer = GetComponent<Renderer>();
-            // InitializeCanvas();
         }
 
+        /// <summary>
+        /// Initializes the canvas by creating a RenderTexture and setting it as the main texture of the object's material. Also creates a texture for the brush.
+        /// 
+        /// </summary>
         public void InitializeCanvas()
         {
             int textureWidth;
             int textureHeight;
             if (_renderer.bounds.size.x / _renderer.bounds.size.z > 1)
             {
-                Debug.Log("Width is greater than height");
                 textureWidth = Mathf.Max(Mathf.ClosestPowerOfTwo((int)_renderer.bounds.size.x * 1000), 2048);
                 textureHeight = Mathf.Max(Mathf.ClosestPowerOfTwo((int)_renderer.bounds.size.z * 1000), 2048);
             }
             else if (_renderer.bounds.size.z / _renderer.bounds.size.x > 1)
             {
-                Debug.Log("Height is greater than width");
                 textureWidth = Mathf.Max(Mathf.ClosestPowerOfTwo((int)_renderer.bounds.size.z * 1000), 2048);
                 textureHeight = Mathf.Max(Mathf.ClosestPowerOfTwo((int)_renderer.bounds.size.x * 1000), 2048);
             }
             else
             {
-                Debug.Log("Width and height are equal");
                 textureWidth = 2048;
                 textureHeight = 2048;
             }
 
             _aspectRatio = textureWidth / (float)textureHeight;
-            Debug.Log("Texture size: " + textureWidth + "x" + textureHeight);
-            Debug.Log("Aspect ratio: " + _aspectRatio);
 
             renderTexture = new RenderTexture(textureWidth, textureHeight, 0, RenderTextureFormat.ARGB32);
             RenderTexture.active = renderTexture;
@@ -77,6 +75,9 @@ namespace SprayAR
             _renderer.material.mainTexture = renderTexture;
         }
 
+        /// <summary>
+        /// Clears the canvas by filling the RenderTexture with a clear color.
+        /// </summary>
         public void ResetCanvas()
         {
             RenderTexture.active = renderTexture;
@@ -84,6 +85,14 @@ namespace SprayAR
             RenderTexture.active = null;
         }
 
+        /// <summary>
+        /// The main painting method. This method is called from the SprayCan script.
+        /// 
+        /// </summary>
+        /// <param name="uv"> The UV coordinates of the point to paint on the texture.</param>
+        /// <param name="dist"> The distance from the caller (for example the spraying can) to the point to paint.</param>
+        /// <param name="brushColor">The color to paint with.</param>
+        /// <param name="force">The force applied to the nozzle head of the spraying can. This value is used to calculate the opacity of the paint.</param>
         public void Paint(Vector2 uv, float dist, Color brushColor, float force)
         {
             if (Time.time - lastBrushTime > 0.2f)

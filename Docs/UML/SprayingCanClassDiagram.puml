@@ -1,0 +1,135 @@
+@startuml
+
+package SprayingCan {
+    top to bottom direction
+    class SprayCan {
+        + int FillLevelPercentage
+        + float MaxFillLevel
+        + bool isEmpty
+        + bool isFull
+        + Color SprayColor
+        - SprayCanFeedbackSystem _feedbackSystem
+        - float _currentFillLevel
+        - float _maxFillLevel
+        - Color _sprayColor 
+        - SprayCanStateMachine _stateMachine
+        - Transform _nozzleOrigin
+        -RaycastHit[] _raycastHits
+        - LayerMask mask
+        
+        + void InitiateColorFill(Color color)
+        + void AbortColorFill()
+        + void SetSprayColor(Color color)
+        + void UseSpray(float amount)
+        + void Refill(float percentageAmount)
+        + void EmptyCan()
+        + void Paint(float force)
+        - void Start()
+        - void Update()
+    }
+
+    class SprayCanStateMachine {
+        - ISprayCanState _currentState
+        - EventBinding _sprayCanStateEventBinding
+        + SprayCanFeedbackSystem _feedbackSystem
+        + void TransitionToState(ISprayCanState newState)
+        + void ExecuteStateUpdate()
+        + void Spray(float force)
+        + void OnSprayCanStateEvent(SprayCanStateEvent sprayCanStateEvent)
+    }
+
+    interface ISprayCanState {
+        + void EnterState()
+        + void ExitState()
+        + void OnSprayCanStateEvent(SprayCanStateEvent sprayCanStateEvent)
+        + void Update()
+    }
+
+    class IdleState implements ISprayCanState {
+        - SprayCanStateMachine _stateMachine
+        + void EnterState()
+        + void ExitState()
+        + void OnSprayCanStateEvent(SprayCanStateEvent sprayCanStateEvent)
+        + void Update()
+    }
+
+    class EmptyState implements ISprayCanState {
+        - SprayCanStateMachine _stateMachine
+        + void EnterState()
+        + void ExitState()
+        + void OnSprayCanStateEvent(SprayCanStateEvent sprayCanStateEvent)
+        + void Update()
+    }
+
+    class FillColorState implements ISprayCanState {
+        - SprayCanStateMachine _stateMachine
+        + void EnterState()
+        + void ExitState()
+        + void OnSprayCanStateEvent(SprayCanStateEvent sprayCanStateEvent)
+        + void Update()
+    }
+
+    class SprayingState implements ISprayCanState {
+        - SprayCanStateMachine _stateMachine
+        + void EnterState()
+        + void ExitState()
+        + void OnSprayCanStateEvent(SprayCanStateEvent sprayCanStateEvent)
+        + void Update()
+    }
+
+    class StandbyState implements ISprayCanState {
+        - SprayCanStateMachine _stateMachine
+        + void EnterState()
+        + void ExitState()
+        + void OnSprayCanStateEvent(SprayCanStateEvent sprayCanStateEvent)
+        + void Update()
+    }
+
+    struct SprayCanStateEvent {
+        + bool IsGrabbed
+        + float Force
+    }
+
+    class SprayCanFeedbackSystem {
+        - ParticleSystem _sprayParticles
+        - AudioSource _spraySound
+        - bool _isInStandbyMode
+        - float _colorIndicatorMaxHeight
+        - EventBinding _batteryLevelEventBinding
+        - GameObject _sprayCanVisual
+        - GameObject _statsMenu
+        - Image _colorIndicator
+        - Image _colorBackground
+        - TextMeshProUGUI _batteryLevelEmptyText
+        - float _colorBackgroundOpacity
+        - AudioClip _canRefillSuccessSound
+        - AudioSource _canRefillProgressSound
+        - Sprite[] _batteryLevelSprites
+        - TextMeshProUGUI _batteryLevelText
+
+        - void Awake()
+        - void Start()
+        - void OnBatteryLevelEvent(SprayingCanBatteryEvent @event)
+
+        + void ActivateFeedback()
+        + void DeactivateFeedback()
+        + void UpdateSprayColor(Color color)
+        + void TransitionSpraySoundVolume(float targetVolume, float duration)
+        + void UpdateSprayColor(Color newColor)
+        + void UpdateFillIndicator(float percentage)
+        + void SetToStandby()
+        + void ActivateStatsMenu()
+        + void DeactivateStatsMenu()
+        + void PlayCanRefillSuccessSound()
+        + void PlayCanRefillProgressSound()
+        + void StopCanRefillProgressSound()
+    }
+}
+
+SprayCan --> SprayCanStateMachine
+SprayCanStateMachine --> ISprayCanState
+SprayCanStateMachine --> SprayCanStateEvent
+SprayCan --> SprayCanFeedbackSystem
+}
+
+@enduml

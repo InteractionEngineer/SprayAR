@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace SprayAR
 {
+    /// <summary>
+    /// Is engaged when the spray can isn't empty and the player is pressing the button.
     public class SprayingState : ISprayCanState
     {
         private const float Duration = 0.2f;
@@ -32,6 +34,7 @@ namespace SprayAR
         {
             StopSpraying();
         }
+
 
         public void OnSprayCanStateEvent(SprayCanStateEvent sprayCanStateEvent)
         {

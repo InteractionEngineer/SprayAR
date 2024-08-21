@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace SprayAR
 {
+    /// <summary>
+    /// Handles messages sent on the ping OSC address for the spraying can.
+    /// See <see cref="OSCRoutes"/> for the address.
+    /// </summary>
     public class SprayingCanPingHandler : IOSCAdressHandler
     {
         public void HandleMessage(OSCMessage message)
@@ -26,6 +30,9 @@ namespace SprayAR
         }
 
 
+        /// <summary>
+        /// Event for when the spraying can receives a ping message.
+        /// </summary>
         public struct SprayingCanPingEvent : IEvent
         {
             public string Active { get; private set; }

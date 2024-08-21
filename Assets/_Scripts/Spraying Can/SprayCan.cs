@@ -1,8 +1,10 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace SprayAR
 {
+    /// <summary>
+    /// The main class for the spray can.
+    /// </summary>
     [RequireComponent(typeof(SprayCanFeedbackSystem))]
     public class SprayCan : MonoBehaviour
     {
@@ -81,6 +83,11 @@ namespace SprayAR
             _stateMachine.ExecuteStateUpdate();
         }
 
+        /// <summary>
+        /// Emits a raycast from the nozzle origin and paints the object hit by the raycast, if it has a <see cref="ShaderPainter"/> component.
+        /// 
+        /// </summary>
+        /// <param name="force"> The force applied to the nozzle head of the spray can.</param>
         public void Paint(float force)
         {
             int hitCount = Physics.RaycastNonAlloc(_nozzleOrigin.position, _nozzleOrigin.forward, raycastHits, 0.8f, mask);

@@ -29,14 +29,14 @@ namespace SprayAR
                     if (_isFilling)
                     {
                         _isFilling = false;
-                        StopFillingAnimation(); // Stop the animation when filling stops
+                        StopFillingAnimation();
                     }
                     break;
                 case FillColorEventType.Start:
                     if (@event.NewColor == _sprayColor.ColorData)
                     {
                         _isFilling = true;
-                        StartFillingAnimation(); // Start the animation when filling starts
+                        StartFillingAnimation();
                     }
                     break;
             }
@@ -44,9 +44,11 @@ namespace SprayAR
 
         private void StartFillingAnimation()
         {
-            if (!_isFilling) return; // Return if not filling
+            // Return if not filling
+            if (!_isFilling) return;
 
-            transform.DOScale(_initialScale * 1.1f, 0.5f).SetLoops(-1, LoopType.Yoyo); // Scale the object up and down
+            // Scale the color box up and down in a loop
+            transform.DOScale(_initialScale * 1.1f, 0.5f).SetLoops(-1, LoopType.Yoyo);
         }
 
         private void StopFillingAnimation()

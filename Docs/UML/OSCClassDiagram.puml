@@ -1,0 +1,68 @@
+@startuml OSCClassDiagram
+top to bottom direction
+
+package OSC {
+class OSCService {
+        - OSCReceiver _receiver
+        - OSCTransmitter _transmitter
+        - string _sprayingCanIP
+        - int _sprayingCanPort
+        - int _receiverPort
+        - OSCHandlerDispatcher _dispatcher
+        + List<OSCSender> Senders
+        + void Start()
+        + void InitializeOSCComponents()
+        + void OnMessageReceived(OSCMessage message)
+    }
+
+    abstract class OSCSender {
+        + OSCMessage CreateMessage()
+        + void Send(OSCMessage message)
+    }
+
+    class FillColor extends OSCSender {
+        - EventBinding _fillColorEventBinding
+        + OSCTransmitter Transmitter
+        - void OnFillColorEvent(FillColorEvent @event)
+        + void Send(OSCMessage message)
+    }
+
+    class FillState extends OSCSender {
+        - EventBinding _fillStateEventBinding
+        + FillStateType State
+        + void Send(OSCMessage message)
+        + void OnFillStateEvent(FillStateEvent @event)
+        + OSCMessage CreateMessage()
+    }
+
+    class OSCHandlerDispatcher {
+        + Dictionary<string, IOSCAdressHandler> Handlers
+        + void Register(string adress, IOSCAdressHandler handler)
+        + void Dispatch(OSCMessage message)
+    }
+
+    interface IOSCAdressHandler {
+        + void HandleMessage(OSCMessage message)
+    }
+
+    class SprayingCanActiveHandler implements IOSCAdressHandler {
+        + void HandleMessage(OSCMessage message)
+    }
+
+    class SprayingCanBatteryHandler implements IOSCAdressHandler {
+        + void HandleMessage(OSCMessage message)
+    }
+
+    class SprayingCanStateHandler implements IOSCAdressHandler {
+        + void HandleMessage(OSCMessage message)
+    }
+
+    static class OSCRoutes {
+    }
+
+OSCService --> OSCSender
+OSCService --> OSCHandlerDispatcher
+OSCService --> OSCRoutes
+OSCHandlerDispatcher --> IOSCAdressHandler
+}
+@enduml

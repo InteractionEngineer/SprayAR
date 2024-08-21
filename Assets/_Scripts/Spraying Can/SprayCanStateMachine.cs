@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace SprayAR
 {
+    /// <summary>
+    /// The main driver of the spray can.
+    /// Manages the state of the spray can and transitions between states.
+    /// </summary>
     public class SprayCanStateMachine
     {
         private EventBinding<SprayCanStateEvent> _sprayCanStateEventBinding;
