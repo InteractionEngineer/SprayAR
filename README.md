@@ -85,9 +85,9 @@ Folgende 3rd-Party-Assets wurden im Projekt verwendet:
 ### Sounds
 
 - [Pixabay](https://pixabay.com/sound-effects/search/air-pump-62999/)
-  - air-pump-62999.mp3 ()
-  - smoke-machine-spray-3-185122.mp3 ()
-  - system-notification-199277.mp3 ()
+  - air-pump-62999.mp3
+  - smoke-machine-spray-3-185122.mp3
+  - system-notification-199277.mp3
 
 ### Grafiken
 
