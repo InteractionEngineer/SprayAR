@@ -1,4 +1,4 @@
-name: Generate Documentation
+name: Doxygen GitHub Pages Deploy Action
 
 on:
   push:
@@ -6,28 +6,9 @@ on:
       - main
 
 jobs:
-  generate-docs:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Install Doxygen
-        run: sudo apt-get install doxygen -y
-
-      - name: Install Graphviz (for diagrams)
-        run: sudo apt-get install graphviz -y
-
-      - name: Generate Doxygen Documentation
-        run: doxygen Doxyfile
-
-      - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main'
-        uses: AgarwalSaurav/ghaction-doxygen-ghpages@release/v2
+      - uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
         with:
           github_token: ${{ secrets.SPRAYARDOC }}
-          working-directory: .
-          doxyfile-path: Doxyfile
-          html-output-folder: doc/html
-          branch: gh-pages
