@@ -3,7 +3,7 @@
 Dieses Dokument beinhaltet die technische Dokumentation des Projektes "SprayAR" von Jona König und David Credo. Es soll einen Überblick über die Systeme und Komponenten des Projektes geben und deren Funktionsweisen erläutern, um so die Wartung und Weiterentwicklung des Projektes zu erleichtern. Ferner werden die notwendigen Schritte zur Einrichtung des Projektes und zur Erstellung einer Build-Version beschrieben.
 
 Projekttitel: SprayAR
-Unity Version: 2022.3.17f1 **Nochmal prüfen!**
+Unity Version: 2022.3.22f1
 Verwendete AR/VR Hardware: Open XR, Meta Quest 3
 Teammitglieder: Jona König, David Credo
 
@@ -17,12 +17,8 @@ Teammitglieder: Jona König, David Credo
     - [State Machine](#state-machine)
     - [OSC-Service](#osc-service)
 3. [Eigenleistungen und 3rd-Party-Assets](#eigenleistungen-und-3rd-party-assets)
-    - [Eigenleistungen](#eigenleistungen)
-    - [3rd-Party-Assets](#3rd-party-assets)
-4. [Teilsysteme und Komponenten (UML)](#teilsysteme-und-komponenten-uml)
-    - [State Diagramm der Spraying Can State Machine](#state-diagramm-der-spraying-can-state-machine)
-    - [Klassendiagramm des OSC-Service](#klassendiagramm-des-osc-service)
-    - [Klassendiagramm des Spraying Can Systems](#klassendiagramm-des-spraying-can-systems)
+    - [Sounds](#sounds)
+    - [Grafiken](#grafiken)
 
 ## Einleitung
 
@@ -52,14 +48,45 @@ Der Deployment-Prozess ist weitestgehend identisch zum Standardprozess in Unity.
 
 Der Event-Bus ist ein zentrales Element des Projektes, um die Kommunikation zwischen den verschiedenen Komponenten zu ermöglichen. Er basiert auf dem Observer-Pattern und ermöglicht es, dass Komponenten auf Ereignisse reagieren können, ohne direkt voneinander abhängig zu sein. Der Event-Bus ist als statische Klasse implementiert und kann von überall im Projekt aufgerufen werden.
 
-### State Machine
+### Spraying Can System
+
+Das Spraying Can System besteht aus mehreren Komponenten: 
+
+- **SprayCan** Die SprayCan Klasse stellt die Hauptkomponente des Systems dar. Sie enthält die Logik für das Sprühen sowie die relevanten Daten (Farbe, Füllstand, etc.). Außerdem delegiert sie Arbeit an weitere Komponenten: die State Machine und das Feedback System.
+- **State Machine** Die State Machine verwaltet den Zustand der Spraying Can. Sie besteht aus mehreren States, die die verschiedenen Zustände der Spraying Can repräsentieren. Weitere Informationen zur State Machine finden sich im Abschnitt [State Machine](#state-machine).
+- **Feedback System** Das Feedback System ist für die visuelle und haptische Rückmeldung des verschiedener Vorgänge der Spraying Can zuständig. Es besteht aus mehreren Komponenten, die die verschiedenen Feedbacks repräsentieren (z.B. das Auffüllen der Farbe oder das Sprühen, und Anzeigen des UIs).
+
+Nachfolgend ist ein Klassendiagramm des Spraying Can Systems dargestellt:
+![Klassendiagramm des Spraying Can Systems](./Docs/Diagrams/SprayingCanClassDiagram.png)
+
+#### State Machine
 
 Das State Machine Pattern wird verwendet, um den Zustand der Spraying Can zu verwalten. Sie besteht aus mehreren States, die die verschiedenen Zustände der Spraying Can repräsentieren.
 
 Nachfolgend ist ein State-Diagramm der Spraying Can State Machine dargestellt:
-![State Diagramm der Spraying Can State Machine](./Docs/UML/StateMachine.png)
+![State Diagramm der Spraying Can State Machine](./Docs/Diagrams/StateMachine.png)
 
 ### OSC-Service
 
-Der OSC-Service ermöglicht die Kommunikation zwischen dem ESP32 und Unity mittels OSC. Der OSC-Service empfängt OSC-Nachrichten vom ESP32 und leitet sie an die entsprechenden Komponenten weiter. Ebenso sendet der OSC-Service OSC-Nachrichten, wenn Ereignisse in Unity auftreten (Z.B. wenn die Farbe der Spraying Can aufgefüllt wird).
+Der OSC-Service ermöglicht die Kommunikation zwischen dem ESP32 und Unity mittels OSC. Er empfängt OSC-Nachrichten vom ESP32 und leitet sie an die entsprechenden Komponenten weiter. Ebenso sendet er OSC-Nachrichten, wenn Ereignisse in Unity auftreten (Z.B. wenn die Farbe der Spraying Can aufgefüllt wird).
 
+Klassendiagramm des OSC-Service:
+![Klassendiagramm des OSC-Service](./Docs/Diagrams/OSCClassDiagram.png)
+
+## Eigenleistungen und 3rd-Party-Assets
+
+Folgende 3rd-Party-Assets wurden im Projekt verwendet:
+
+### Sounds 
+
+- [Pixabay](https://pixabay.com/sound-effects/search/air-pump-62999/)
+    - air-pump-62999.mp3 ()
+    - smoke-machine-spray-3-185122.mp3 ()
+    - system-notification-199277.mp3 ()
+
+### Grafiken
+
+- [Icons8](https://icons8.de/icons/set/battery)
+    - icons8-batterie-voll-geladen-100.png
+    - icons8-leere-batterie-100.png
+    - icons8-volle-batterie-100.png
