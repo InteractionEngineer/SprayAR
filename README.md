@@ -44,9 +44,21 @@ Der Deployment-Prozess ist weitestgehend identisch zum Standardprozess in Unity.
 
 ## Grundlegende Architektur
 
+### Überblick des Gesamtsystems
+
+![Systemübersicht](./Docs/Diagrams/Systemarchitektur.png)
+
 ### Event-Bus
 
 Der Event-Bus ist ein zentrales Element des Projektes, um die Kommunikation zwischen den verschiedenen Komponenten zu ermöglichen. Er basiert auf dem Observer-Pattern und ermöglicht es, dass Komponenten auf Ereignisse reagieren können, ohne direkt voneinander abhängig zu sein. Der Event-Bus ist als statische Klasse implementiert und kann von überall im Projekt aufgerufen werden.
+
+### OSC-Service
+
+Der OSC-Service ermöglicht die Kommunikation zwischen dem ESP32 und Unity mittels OSC. Er empfängt OSC-Nachrichten vom ESP32 und leitet sie an die entsprechenden Komponenten weiter. Ebenso sendet er OSC-Nachrichten, wenn Ereignisse in Unity auftreten (Z.B. wenn die Farbe der Spraying Can aufgefüllt wird).
+
+Klassendiagramm des OSC-Service:
+![Klassendiagramm des OSC-Service](./Docs/Diagrams/OSCClassDiagram.png)
+
 
 ### Spraying Can System
 
@@ -66,27 +78,20 @@ Das State Machine Pattern wird verwendet, um den Zustand der Spraying Can zu ver
 Nachfolgend ist ein State-Diagramm der Spraying Can State Machine dargestellt:
 ![State Diagramm der Spraying Can State Machine](./Docs/Diagrams/StateMachine.png)
 
-### OSC-Service
-
-Der OSC-Service ermöglicht die Kommunikation zwischen dem ESP32 und Unity mittels OSC. Er empfängt OSC-Nachrichten vom ESP32 und leitet sie an die entsprechenden Komponenten weiter. Ebenso sendet er OSC-Nachrichten, wenn Ereignisse in Unity auftreten (Z.B. wenn die Farbe der Spraying Can aufgefüllt wird).
-
-Klassendiagramm des OSC-Service:
-![Klassendiagramm des OSC-Service](./Docs/Diagrams/OSCClassDiagram.png)
-
 ## Eigenleistungen und 3rd-Party-Assets
 
 Folgende 3rd-Party-Assets wurden im Projekt verwendet:
 
-### Sounds 
+### Sounds
 
 - [Pixabay](https://pixabay.com/sound-effects/search/air-pump-62999/)
-    - air-pump-62999.mp3 ()
-    - smoke-machine-spray-3-185122.mp3 ()
-    - system-notification-199277.mp3 ()
+  - air-pump-62999.mp3 ()
+  - smoke-machine-spray-3-185122.mp3 ()
+  - system-notification-199277.mp3 ()
 
 ### Grafiken
 
 - [Icons8](https://icons8.de/icons/set/battery)
-    - icons8-batterie-voll-geladen-100.png
-    - icons8-leere-batterie-100.png
-    - icons8-volle-batterie-100.png
+  - icons8-batterie-voll-geladen-100.png
+  - icons8-leere-batterie-100.png
+  - icons8-volle-batterie-100.png
