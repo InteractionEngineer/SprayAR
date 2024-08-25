@@ -34,6 +34,8 @@ Im Projekt sind folgende Ordner und Dateien für die Weiterentwicklung relevant:
 
 Der Deployment-Prozess ist weitestgehend identisch zum Standardprozess in Unity. Es sind jedoch spezielle Schritte notwendig, damit die Kommunikation mittels OSC zwischen dem ESP32 und Unity funktioniert. 
 
+Vorab: Das zugehörige Repository für den ESP32 ist unter folgendem Link zu finden: [SprayAR-ESP32](https://github.com/InteractionEngineer/Schuetteldose)
+
 1. IP Adresse der Quest 3 herausfinden (Einstellungen -> WLAN -> Verbindungsdetails)
 2. Gefundene IP Adresse im Quellcode des ESP32 anpassen
 3. IP Adresse des ESP32 herausfinden (Serial Monitor gibt die IP Adresse aus, wenn der ESP32 startet)
