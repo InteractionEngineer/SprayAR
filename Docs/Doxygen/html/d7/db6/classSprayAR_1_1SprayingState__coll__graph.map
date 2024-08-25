@@ -1,0 +1,5 @@
+<map id="SprayAR.SprayingState" name="SprayAR.SprayingState">
+<area shape="rect" id="Node000001" title="Is engaged when the spray can isn&#39;t empty and the player is pressing the button." alt="" coords="5,79,166,105"/>
+<area shape="rect" id="Node000002" href="$d1/d9a/interfaceSprayAR_1_1ISprayCanState.html" title="Interface for the states of the spray can." alt="" coords="28,5,143,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,46,88,79,83,79,83,46"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="SprayAR.SprayCan.Paint" name="SprayAR.SprayCan.Paint">
+<area shape="rect" id="Node000001" title="Emits a raycast from the nozzle origin and paints the object hit by the raycast, if it has a ShaderPa..." alt="" coords="528,29,698,55"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="656,17,642,11,613,8,587,10,573,15,570,20,577,27,573,31,565,21,570,11,586,5,613,3,643,5,658,13"/>
+<area shape="rect" id="Node000002" href="$d7/dfb/classSprayAR_1_1SprayCanStateMachine.html#a8370f88546b4301c2252f8edd15da700" title=" " alt="" coords="260,22,480,63"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="512,45,480,45,480,40,512,40"/>
+<area shape="rect" id="Node000003" href="$d7/df8/classSprayAR_1_1SprayingState.html#ad9df83dfef92a5cfbe906f84488266b7" title=" " alt="" coords="5,29,212,55"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="244,45,212,45,212,40,244,40"/>
+</map>

@@ -1,0 +1,29 @@
+<map id="SprayAR.ISprayCanState.EnterState" name="SprayAR.ISprayCanState.EnterState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="802,244,1009,285"/>
+<area shape="rect" id="Node000002" href="$d7/dfb/classSprayAR_1_1SprayCanStateMachine.html#a2aad6fd245eadcff3b2593b32475f9f4" title=" " alt="" coords="534,211,754,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="787,252,754,248,755,242,787,247"/>
+<area shape="rect" id="Node000003" href="$d7/dfb/classSprayAR_1_1SprayCanStateMachine.html#ae78e99c8ef7e2ad47072361299fd8b78" title=" " alt="" coords="534,276,754,317"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="787,281,755,285,754,280,787,276"/>
+<area shape="rect" id="Node000004" href="$dc/d85/classSprayAR_1_1SprayCan.html#a77fc9562774869d4b720cbf2b7681223" title=" " alt="" coords="267,13,486,39"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="535,268,532,265,513,237,506,210,505,183,508,156,511,129,510,104,503,78,484,53,468,41,471,37,488,49,507,76,516,103,516,130,514,156,511,183,511,209,518,235,536,261,539,264"/>
+<area shape="rect" id="Node000006" href="$d5/de0/classSprayAR_1_1FillColorState.html#a5787282a6f511a6147864ce76853918b" title="First, check if the can is full and the color is the same as the one being filled...." alt="" coords="280,63,473,103"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="537,269,532,265,517,246,510,227,507,189,505,152,498,135,484,117,470,106,473,102,488,113,503,132,510,151,513,189,515,226,522,243,536,261,540,265"/>
+<area shape="rect" id="Node000007" href="$d1/d58/classSprayAR_1_1IdleState.html#a121f07ecd0cd11439ebce290464e9076" title=" " alt="" coords="278,128,475,153"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="538,270,532,265,521,253,514,240,508,214,502,190,495,179,484,168,465,156,467,151,488,164,500,176,507,188,513,213,519,238,525,250,536,261,542,266"/>
+<area shape="rect" id="Node000008" href="$dc/d85/classSprayAR_1_1SprayCan.html#a44aadb446b478da6384595c94d43cfba" title=" " alt="" coords="287,177,466,218"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="549,273,533,265,509,249,485,233,455,221,457,216,487,229,511,245,535,261,551,268"/>
+<area shape="rect" id="Node000009" href="$d5/de0/classSprayAR_1_1FillColorState.html#a5c4a42249db7c541be35d0dadc6dcb62" title=" " alt="" coords="287,243,466,283"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="518,283,465,277,466,271,519,278"/>
+<area shape="rect" id="Node000010" href="$d1/d58/classSprayAR_1_1IdleState.html#a935e4e3b72cacbfc36c018de79bfae85" title=" " alt="" coords="284,308,469,349"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="519,314,470,320,469,315,518,309"/>
+<area shape="rect" id="Node000011" href="$d7/df8/classSprayAR_1_1SprayingState.html#a048454c30de529e319452979e9f62157" title=" " alt="" coords="286,373,467,414"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="582,326,487,363,450,375,448,370,485,358,580,321"/>
+<area shape="rect" id="Node000012" href="$df/df8/classSprayAR_1_1StandbyState.html#ad622fec0e2e5be65791f6c24684c5c0c" title=" " alt="" coords="270,439,483,479"/>
+<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="614,330,558,380,523,406,487,428,459,440,457,436,485,423,520,401,554,376,610,326"/>
+<area shape="rect" id="Node000013" href="$d5/de0/classSprayAR_1_1FillColorState.html#af033ec0d2cb7b29d3ccc15e8cd8b9946" title="Update the fill progress of the can. Currently, the can fills up 25% of the max fill level per second..." alt="" coords="275,504,478,529"/>
+<area shape="poly" id="edge12_Node000003_Node000013" title=" " alt="" coords="627,332,604,370,572,414,533,457,487,493,462,505,460,501,485,489,530,453,568,410,600,367,623,329"/>
+<area shape="rect" id="Node000014" href="$d7/df8/classSprayAR_1_1SprayingState.html#ad9df83dfef92a5cfbe906f84488266b7" title=" " alt="" coords="273,553,480,579"/>
+<area shape="poly" id="edge13_Node000003_Node000014" title=" " alt="" coords="633,332,612,381,581,438,540,496,515,522,487,544,468,555,465,550,485,539,511,518,536,492,577,435,608,378,628,330"/>
+<area shape="rect" id="Node000005" href="$d3/d37/classSprayAR_1_1ColorSystemController.html#ab7334051efdab9efd9bc212c855bf6b7" title=" " alt="" coords="5,5,219,46"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="251,28,219,28,219,23,251,23"/>
+</map>

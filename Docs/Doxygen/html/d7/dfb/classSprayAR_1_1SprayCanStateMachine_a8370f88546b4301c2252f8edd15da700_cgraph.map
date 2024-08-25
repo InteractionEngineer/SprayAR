@@ -1,0 +1,10 @@
+<map id="SprayAR.SprayCanStateMachine.Spray" name="SprayAR.SprayCanStateMachine.Spray">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,47,226,88"/>
+<area shape="rect" id="Node000002" href="$dc/d85/classSprayAR_1_1SprayCan.html#a3426f64d1e8cd4becbf8b326dc57a844" title="Emits a raycast from the nozzle origin and paints the object hit by the raycast, if it has a ShaderPa..." alt="" coords="288,29,458,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,54,272,49,273,55,227,59"/>
+<area shape="rect" id="Node000003" href="$dc/d85/classSprayAR_1_1SprayCan.html#ab28c8d5141b40a4c8806d298f715eccd" title=" " alt="" coords="274,79,472,104"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="227,75,259,78,258,83,226,80"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="333,31,325,21,329,11,346,5,373,3,403,5,418,13,416,17,402,11,373,8,347,10,333,15,330,20,337,27"/>
+<area shape="rect" id="Node000004" href="$d7/d64/classSprayAR_1_1SprayCanFeedbackSystem.html#a19b94a1c4ec27ba0054ef6e1540a5403" title="Updates the fill indicator on the hand attached UI to reflect the current fill level of the spray can..." alt="" coords="520,71,713,112"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="473,89,504,89,504,94,473,94"/>
+</map>

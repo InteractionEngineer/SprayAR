@@ -1,0 +1,7 @@
+<map id="SprayAR.OSCSender" name="SprayAR.OSCSender">
+<area shape="rect" id="Node000001" title=" " alt="" coords="69,5,217,31"/>
+<area shape="rect" id="Node000002" href="$d4/d26/classSprayAR_1_1FillColor.html" title=" " alt="" coords="5,79,132,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,44,83,81,79,77,118,40"/>
+<area shape="rect" id="Node000003" href="$de/d1e/classSprayAR_1_1FillState.html" title=" " alt="" coords="156,79,282,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="169,40,208,77,205,81,165,44"/>
+</map>

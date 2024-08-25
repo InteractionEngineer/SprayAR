@@ -1,0 +1,7 @@
+<map id="SprayAR.SprayCanFeedbackSystem.SetToStandby" name="SprayAR.SprayCanFeedbackSystem.SetToStandby">
+<area shape="rect" id="Node000001" title="Sets the feedback system to standby mode, where no feedback is provided. This is supposed to be used ..." alt="" coords="5,39,199,79"/>
+<area shape="rect" id="Node000002" href="$d7/d64/classSprayAR_1_1SprayCanFeedbackSystem.html#ae276de3028d62fc29363c0c3d6f379e8" title=" " alt="" coords="248,5,442,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,43,232,38,233,44,200,48"/>
+<area shape="rect" id="Node000003" href="$d7/d64/classSprayAR_1_1SprayCanFeedbackSystem.html#a6286d4346c8293ef04beee0d8c6a7061" title=" " alt="" coords="247,71,443,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,69,232,73,231,79,199,74"/>
+</map>

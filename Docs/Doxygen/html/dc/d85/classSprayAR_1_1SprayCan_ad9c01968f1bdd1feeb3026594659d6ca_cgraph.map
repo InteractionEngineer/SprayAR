@@ -1,0 +1,5 @@
+<map id="SprayAR.SprayCan.SetSprayColor" name="SprayAR.SprayCan.SetSprayColor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,200,46"/>
+<area shape="rect" id="Node000002" href="$d7/d64/classSprayAR_1_1SprayCanFeedbackSystem.html#a986c8d5e75ffe45bd1f4513b64b29c93" title="Updates the visuals to reflect the new color of the spray can." alt="" coords="248,5,441,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,23,232,23,232,28,200,28"/>
+</map>

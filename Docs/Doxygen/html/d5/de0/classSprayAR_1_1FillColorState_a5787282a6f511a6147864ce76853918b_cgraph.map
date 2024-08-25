@@ -1,0 +1,15 @@
+<map id="SprayAR.FillColorState.EnterState" name="SprayAR.FillColorState.EnterState">
+<area shape="rect" id="Node000001" title="First, check if the can is full and the color is the same as the one being filled...." alt="" coords="5,63,198,103"/>
+<area shape="rect" id="Node000002" href="$dc/d85/classSprayAR_1_1SprayCan.html#aad65c3c0ad36f69d8c875ad472dd0f3a" title=" " alt="" coords="264,13,467,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,59,245,48,285,40,286,45,246,54,196,65"/>
+<area shape="rect" id="Node000004" href="$d7/d64/classSprayAR_1_1SprayCanFeedbackSystem.html#ad39bc3b045c23eb1a3d5a1eb2b8305a9" title=" " alt="" coords="246,63,485,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="198,80,230,80,230,86,198,86"/>
+<area shape="rect" id="Node000005" href="$d7/dfb/classSprayAR_1_1SprayCanStateMachine.html#ae78e99c8ef7e2ad47072361299fd8b78" title=" " alt="" coords="255,128,476,169"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="187,101,266,121,265,126,186,107"/>
+<area shape="rect" id="Node000003" href="$d7/d64/classSprayAR_1_1SprayCanFeedbackSystem.html#a19b94a1c4ec27ba0054ef6e1540a5403" title="Updates the fill indicator on the hand attached UI to reflect the current fill level of the spray can..." alt="" coords="540,5,733,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="467,23,524,23,524,28,467,28"/>
+<area shape="rect" id="Node000006" href="$d1/d9a/interfaceSprayAR_1_1ISprayCanState.html#a90e771914c09b9c511c0e368ff48e78b" title=" " alt="" coords="533,99,739,139"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="476,134,517,129,518,134,476,139"/>
+<area shape="rect" id="Node000007" href="$d1/d9a/interfaceSprayAR_1_1ISprayCanState.html#accb1812986bc34f40dde12739bfea67a" title=" " alt="" coords="537,164,735,205"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="476,160,522,166,521,172,476,166"/>
+</map>

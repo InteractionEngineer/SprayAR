@@ -4,9 +4,9 @@
 PROJECT_NAME           = "SprayAR"
 PROJECT_BRIEF          = "Mixed Reality App for Quest 3, allowing you to spray paint on your own walls, without the mess."
 PROJECT_VERSION        = "1.0"
-OUTPUT_DIRECTORY       = "docs"
-CREATE_SUBDIRS         = NO
-ALLOW_UNICODE_NAMES    = NO
+OUTPUT_DIRECTORY       = "./Docs/Doxygen"
+CREATE_SUBDIRS         = YES
+ALLOW_UNICODE_NAMES    = YES
 
 # Configuration options related to the input files
 INPUT                  = ./Assets/_Scripts

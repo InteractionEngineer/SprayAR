@@ -1,0 +1,5 @@
+<map id="SprayAR.SprayingCanBatteryHandler" name="SprayAR.SprayingCanBatteryHandler">
+<area shape="rect" id="Node000001" title="Handles messages sent on the battery OSC address for the spraying can. See OSCRoutes for the address." alt="" coords="5,79,201,120"/>
+<area shape="rect" id="Node000002" href="$d8/d12/interfaceSprayAR_1_1IOSCAdressHandler.html" title=" " alt="" coords="33,5,173,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,46,106,79,100,79,100,46"/>
+</map>

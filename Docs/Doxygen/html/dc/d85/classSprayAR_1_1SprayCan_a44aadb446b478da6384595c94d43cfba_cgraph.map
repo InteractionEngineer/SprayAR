@@ -1,0 +1,9 @@
+<map id="SprayAR.SprayCan.InitiateColorFill" name="SprayAR.SprayCan.InitiateColorFill">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,185,79"/>
+<area shape="rect" id="Node000002" href="$d7/dfb/classSprayAR_1_1SprayCanStateMachine.html#ae78e99c8ef7e2ad47072361299fd8b78" title=" " alt="" coords="233,39,453,79"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,56,217,56,217,62,185,62"/>
+<area shape="rect" id="Node000003" href="$d1/d9a/interfaceSprayAR_1_1ISprayCanState.html#a90e771914c09b9c511c0e368ff48e78b" title=" " alt="" coords="501,5,707,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="453,42,485,38,486,43,454,48"/>
+<area shape="rect" id="Node000004" href="$d1/d9a/interfaceSprayAR_1_1ISprayCanState.html#accb1812986bc34f40dde12739bfea67a" title=" " alt="" coords="505,71,703,111"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="454,70,490,74,489,80,453,75"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="SprayAR.SprayCanStateMachine" name="SprayAR.SprayCanStateMachine">
+<area shape="rect" id="Node000001" title="The main driver of the spray can. Manages the state of the spray can and transitions between states." alt="" coords="5,109,222,135"/>
+<area shape="rect" id="Node000002" href="$d7/d64/classSprayAR_1_1SprayCanFeedbackSystem.html" title="This class is responsible for providing feedback to the user when using the spray can." alt="" coords="17,5,210,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,61,116,109,111,109,111,61"/>
+</map>

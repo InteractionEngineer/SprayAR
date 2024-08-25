@@ -1,0 +1,5 @@
+<map id="SprayAR.StandbyState" name="SprayAR.StandbyState">
+<area shape="rect" id="Node000001" title="The state of the spraying can when it isn&#39;t grabbed. This is currently not used due to hardware limit..." alt="" coords="5,79,163,105"/>
+<area shape="rect" id="Node000002" href="$d1/d9a/interfaceSprayAR_1_1ISprayCanState.html" title="Interface for the states of the spray can." alt="" coords="27,5,141,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,46,87,79,81,79,81,46"/>
+</map>

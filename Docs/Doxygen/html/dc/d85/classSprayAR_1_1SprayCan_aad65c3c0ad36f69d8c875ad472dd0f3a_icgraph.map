@@ -1,0 +1,5 @@
+<map id="SprayAR.SprayCan.EmptyCan" name="SprayAR.SprayCan.EmptyCan">
+<area shape="rect" id="Node000001" title=" " alt="" coords="246,13,448,39"/>
+<area shape="rect" id="Node000002" href="$d5/de0/classSprayAR_1_1FillColorState.html#a5787282a6f511a6147864ce76853918b" title="First, check if the can is full and the color is the same as the one being filled...." alt="" coords="5,5,198,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,28,198,28,198,23,230,23"/>
+</map>

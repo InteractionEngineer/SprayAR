@@ -1,0 +1,5 @@
+<map id="SprayAR.SprayingCanBatteryEvent" name="SprayAR.SprayingCanBatteryEvent">
+<area shape="rect" id="Node000001" title="Event for when the spraying can receives a battery message." alt="" coords="5,79,201,120"/>
+<area shape="rect" id="Node000002" href="$d2/d9d/interfaceSprayAR_1_1General_1_1IEvent.html" title=" " alt="" coords="73,5,133,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,46,106,79,100,79,100,46"/>
+</map>

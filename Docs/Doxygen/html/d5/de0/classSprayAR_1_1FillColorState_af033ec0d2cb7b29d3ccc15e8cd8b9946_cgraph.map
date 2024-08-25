@@ -1,0 +1,13 @@
+<map id="SprayAR.FillColorState.Update" name="SprayAR.FillColorState.Update">
+<area shape="rect" id="Node000001" title="Update the fill progress of the can. Currently, the can fills up 25% of the max fill level per second..." alt="" coords="5,50,209,76"/>
+<area shape="rect" id="Node000002" href="$dc/d85/classSprayAR_1_1SprayCan.html#a7a4ae4d75211844115e5d44413833094" title=" " alt="" coords="282,17,452,43"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="209,47,266,40,267,45,210,53"/>
+<area shape="rect" id="Node000004" href="$d7/dfb/classSprayAR_1_1SprayCanStateMachine.html#ae78e99c8ef7e2ad47072361299fd8b78" title=" " alt="" coords="257,71,477,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="210,71,242,75,241,80,209,77"/>
+<area shape="rect" id="Node000003" href="$d7/d64/classSprayAR_1_1SprayCanFeedbackSystem.html#a19b94a1c4ec27ba0054ef6e1540a5403" title="Updates the fill indicator on the hand attached UI to reflect the current fill level of the spray can..." alt="" coords="532,5,725,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="452,26,516,25,516,30,453,31"/>
+<area shape="rect" id="Node000005" href="$d1/d9a/interfaceSprayAR_1_1ISprayCanState.html#a90e771914c09b9c511c0e368ff48e78b" title=" " alt="" coords="525,71,731,111"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="477,88,509,88,509,94,477,94"/>
+<area shape="rect" id="Node000006" href="$d1/d9a/interfaceSprayAR_1_1ISprayCanState.html#accb1812986bc34f40dde12739bfea67a" title=" " alt="" coords="529,136,727,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="452,109,530,129,529,134,450,115"/>
+</map>

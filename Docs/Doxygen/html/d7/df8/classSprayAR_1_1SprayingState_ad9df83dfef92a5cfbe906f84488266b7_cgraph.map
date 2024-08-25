@@ -1,0 +1,18 @@
+<map id="SprayAR.SprayingState.Update" name="SprayAR.SprayingState.Update">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,111,212,136"/>
+<area shape="rect" id="Node000002" href="$d7/dfb/classSprayAR_1_1SprayCanStateMachine.html#a8370f88546b4301c2252f8edd15da700" title=" " alt="" coords="260,70,480,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,108,244,104,245,109,212,113"/>
+<area shape="rect" id="Node000006" href="$d7/dfb/classSprayAR_1_1SprayCanStateMachine.html#ae78e99c8ef7e2ad47072361299fd8b78" title=" " alt="" coords="260,135,480,176"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="212,134,245,137,244,143,212,139"/>
+<area shape="rect" id="Node000003" href="$dc/d85/classSprayAR_1_1SprayCan.html#a3426f64d1e8cd4becbf8b326dc57a844" title="Emits a raycast from the nozzle origin and paints the object hit by the raycast, if it has a ShaderPa..." alt="" coords="546,29,716,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="480,67,542,56,543,61,481,73"/>
+<area shape="rect" id="Node000004" href="$dc/d85/classSprayAR_1_1SprayCan.html#ab28c8d5141b40a4c8806d298f715eccd" title=" " alt="" coords="532,79,730,104"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="481,88,517,88,517,94,480,93"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="590,31,582,21,587,11,604,5,631,3,662,5,677,13,675,17,661,11,631,8,605,10,591,15,587,20,594,27"/>
+<area shape="rect" id="Node000005" href="$d7/d64/classSprayAR_1_1SprayCanFeedbackSystem.html#a19b94a1c4ec27ba0054ef6e1540a5403" title="Updates the fill indicator on the hand attached UI to reflect the current fill level of the spray can..." alt="" coords="782,71,976,112"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="731,89,767,89,767,94,731,94"/>
+<area shape="rect" id="Node000007" href="$d1/d9a/interfaceSprayAR_1_1ISprayCanState.html#a90e771914c09b9c511c0e368ff48e78b" title=" " alt="" coords="528,133,734,173"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="480,152,512,151,512,157,481,157"/>
+<area shape="rect" id="Node000008" href="$d1/d9a/interfaceSprayAR_1_1ISprayCanState.html#accb1812986bc34f40dde12739bfea67a" title=" " alt="" coords="532,198,730,239"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="458,174,529,191,528,196,457,179"/>
+</map>

@@ -1,0 +1,37 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,400,117,426"/>
+<area shape="rect" id="Node000001" href="$d3/d37/classSprayAR_1_1ColorSystemController.html" title="This class is responsible for showing and hiding the color system, which functions likea color picker..." alt="" coords="165,5,376,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="64,385,77,305,98,202,127,104,144,66,163,40,178,29,181,34,167,44,149,69,132,106,104,203,82,306,69,385"/>
+<area shape="rect" id="Node000002" href="$d7/d75/classSprayAR_1_1ControllerPaintingTest.html" title=" " alt="" coords="167,55,374,80"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="60,384,65,323,80,243,93,201,110,160,134,123,163,90,178,79,181,83,166,93,138,126,115,163,98,203,85,245,70,323,65,384"/>
+<area shape="rect" id="Node000003" href="$df/dfc/classSprayAR_1_1HandleFill.html" title=" " alt="" coords="202,104,339,130"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="62,384,69,331,86,265,100,231,116,197,137,166,163,139,181,127,201,120,203,125,183,132,166,143,141,169,121,200,104,233,92,267,75,332,67,385"/>
+<area shape="rect" id="Node000004" href="$da/dba/classSprayAR_1_1InGameDebugConsole.html" title=" " alt="" coords="165,153,376,179"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="64,385,75,341,94,288,122,234,141,209,163,188,180,177,183,182,166,192,145,213,127,237,98,290,80,343,70,386"/>
+<area shape="rect" id="Node000005" href="$d8/d17/classSprayAR_1_1MDNSDiscoveryClient.html" title="In the future, this class will be used to discover services on the local network using mDNS...." alt="" coords="165,203,376,228"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="68,384,82,350,102,310,129,271,163,237,182,227,185,231,166,242,133,274,106,313,87,352,73,386"/>
+<area shape="rect" id="Node000006" href="$dc/db0/classSprayAR_1_1OSCService.html" title="Represents a service for handling OSC (Open Sound Control) communication. Central hub for sending and..." alt="" coords="195,252,346,278"/>
+<area shape="poly" id="edge6_Node000000_Node000006" title=" " alt="" coords="75,385,110,334,135,308,163,287,193,273,195,278,166,291,139,312,114,338,79,388"/>
+<area shape="rect" id="Node000007" href="$dd/dfe/classSprayAR_1_1OrientateTowards.html" title=" " alt="" coords="180,301,361,327"/>
+<area shape="poly" id="edge7_Node000000_Node000007" title=" " alt="" coords="86,387,121,360,164,336,193,325,195,330,166,341,124,365,90,392"/>
+<area shape="rect" id="Node000008" href="$d0/d03/classSprayAR_1_1PositionInReach.html" title=" " alt="" coords="183,351,358,376"/>
+<area shape="poly" id="edge8_Node000000_Node000008" title=" " alt="" coords="130,393,164,385,209,374,211,380,165,390,131,398"/>
+<area shape="rect" id="Node000009" href="$d6/d7e/classSprayAR_1_1ShaderPainter.html" title=" " alt="" coords="190,400,351,426"/>
+<area shape="poly" id="edge9_Node000000_Node000009" title=" " alt="" coords="132,410,190,410,190,416,132,416"/>
+<area shape="rect" id="Node000010" href="$d7/dbe/classSprayAR_1_1ShaderVertexPaint.html" title=" " alt="" coords="177,449,364,475"/>
+<area shape="poly" id="edge10_Node000000_Node000010" title=" " alt="" coords="131,427,165,436,211,446,209,451,164,441,130,432"/>
+<area shape="rect" id="Node000011" href="$db/d36/classSprayAR_1_1SimpleCollisionPainter.html" title=" " alt="" coords="166,499,375,524"/>
+<area shape="poly" id="edge11_Node000000_Node000011" title=" " alt="" coords="90,434,124,461,166,485,195,496,193,501,164,490,121,465,86,438"/>
+<area shape="rect" id="Node000012" href="$dc/d85/classSprayAR_1_1SprayCan.html" title="The main class for the spray can." alt="" coords="202,548,339,574"/>
+<area shape="poly" id="edge12_Node000000_Node000012" title=" " alt="" coords="79,437,114,488,139,513,166,535,203,550,201,555,163,539,135,517,110,491,75,441"/>
+<area shape="rect" id="Node000013" href="$d7/d64/classSprayAR_1_1SprayCanFeedbackSystem.html" title="This class is responsible for providing feedback to the user when using the spray can." alt="" coords="174,598,367,639"/>
+<area shape="poly" id="edge13_Node000000_Node000013" title=" " alt="" coords="74,439,87,473,107,512,133,551,166,584,184,595,181,599,163,588,129,554,103,514,82,475,69,441"/>
+<area shape="rect" id="Node000014" href="$d2/d20/classSprayAR_1_1SprayCanInteractor.html" title="Triggers the spray can to fill with a color when the player enters the trigger. Is attached to the sp..." alt="" coords="175,663,366,688"/>
+<area shape="poly" id="edge14_Node000000_Node000014" title=" " alt="" coords="69,440,79,486,97,542,125,600,144,626,166,648,185,660,182,664,163,652,140,629,121,603,92,544,73,487,64,441"/>
+<area shape="rect" id="Node000015" href="$d3/d87/classSprayAR_1_1SprayColor.html" title=" " alt="" coords="199,712,342,738"/>
+<area shape="poly" id="edge15_Node000000_Node000015" title=" " alt="" coords="66,441,73,496,89,566,102,603,119,638,140,671,166,699,182,709,199,716,197,721,179,714,163,703,136,674,114,641,97,605,84,568,68,497,61,442"/>
+<area shape="rect" id="Node000016" href="$de/d30/classSprayAR_1_1VertexPainter.html" title=" " alt="" coords="192,761,349,787"/>
+<area shape="poly" id="edge16_Node000000_Node000016" title=" " alt="" coords="65,441,68,505,83,588,95,632,113,674,137,714,166,748,193,764,190,768,163,752,132,717,108,677,90,634,77,589,63,505,59,441"/>
+<area shape="rect" id="Node000017" href="$d9/d17/classSprayAR_1_1VirtualCanvasPlacer.html" title=" " alt="" coords="172,811,369,836"/>
+<area shape="poly" id="edge17_Node000000_Node000017" title=" " alt="" coords="69,440,81,523,102,631,131,732,148,772,167,798,181,808,177,812,163,801,144,774,126,734,97,632,76,524,63,441"/>
+</map>

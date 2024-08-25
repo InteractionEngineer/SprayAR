@@ -1,0 +1,5 @@
+<map id="SprayAR.SprayingCanPingHandler.SprayingCanPingEvent" name="SprayAR.SprayingCanPingHandler.SprayingCanPingEvent">
+<area shape="rect" id="Node000001" title="Event for when the spraying can receives a ping message." alt="" coords="5,79,233,120"/>
+<area shape="rect" id="Node000002" href="$d2/d9d/interfaceSprayAR_1_1General_1_1IEvent.html" title=" " alt="" coords="89,5,149,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,46,122,79,116,79,116,46"/>
+</map>

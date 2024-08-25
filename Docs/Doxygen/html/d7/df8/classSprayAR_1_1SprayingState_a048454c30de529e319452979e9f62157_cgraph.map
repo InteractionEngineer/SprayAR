@@ -1,0 +1,11 @@
+<map id="SprayAR.SprayingState.OnSprayCanStateEvent" name="SprayAR.SprayingState.OnSprayCanStateEvent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,187,79"/>
+<area shape="rect" id="Node000002" href="$d7/d64/classSprayAR_1_1SprayCanFeedbackSystem.html#a2f7d40c1af269f9ccd381ae9dbbbfff5" title="Transitions the volume of the spray sound to allow for smooth volume changes." alt="" coords="235,5,477,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,45,219,41,220,46,188,50"/>
+<area shape="rect" id="Node000003" href="$d7/dfb/classSprayAR_1_1SprayCanStateMachine.html#ae78e99c8ef7e2ad47072361299fd8b78" title=" " alt="" coords="246,71,466,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="188,68,230,73,230,78,187,73"/>
+<area shape="rect" id="Node000004" href="$d1/d9a/interfaceSprayAR_1_1ISprayCanState.html#a90e771914c09b9c511c0e368ff48e78b" title=" " alt="" coords="525,37,731,78"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="466,75,509,70,510,75,467,80"/>
+<area shape="rect" id="Node000005" href="$d1/d9a/interfaceSprayAR_1_1ISprayCanState.html#accb1812986bc34f40dde12739bfea67a" title=" " alt="" coords="529,103,727,143"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="467,101,514,107,513,112,466,107"/>
+</map>

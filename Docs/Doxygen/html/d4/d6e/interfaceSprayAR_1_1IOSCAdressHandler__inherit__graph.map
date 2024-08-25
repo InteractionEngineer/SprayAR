@@ -1,0 +1,9 @@
+<map id="SprayAR.IOSCAdressHandler" name="SprayAR.IOSCAdressHandler">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,70,203,96"/>
+<area shape="rect" id="Node000002" href="$d6/dc4/classSprayAR_1_1SprayingCanBatteryHandler.html" title="Handles messages sent on the battery OSC address for the spraying can. See OSCRoutes for the address." alt="" coords="265,5,461,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,64,267,44,268,49,181,69"/>
+<area shape="rect" id="Node000003" href="$de/d88/classSprayAR_1_1SprayingCanPingHandler.html" title="Handles messages sent on the ping OSC address for the spraying can. See OSCRoutes for the address." alt="" coords="251,70,475,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="219,80,250,80,250,86,219,86"/>
+<area shape="rect" id="Node000004" href="$d6/d70/classSprayAR_1_1SprayingCanStateHandler.html" title="Handles messages sent on the spray button OSC address for the spraying can. See OSCRoutes for the add..." alt="" coords="271,120,455,161"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="181,97,271,117,270,123,180,102"/>
+</map>

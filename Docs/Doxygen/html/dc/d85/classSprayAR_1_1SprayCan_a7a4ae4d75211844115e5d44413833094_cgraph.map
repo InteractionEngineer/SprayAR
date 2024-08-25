@@ -1,0 +1,5 @@
+<map id="SprayAR.SprayCan.Refill" name="SprayAR.SprayCan.Refill">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,176,39"/>
+<area shape="rect" id="Node000002" href="$d7/d64/classSprayAR_1_1SprayCanFeedbackSystem.html#a19b94a1c4ec27ba0054ef6e1540a5403" title="Updates the fill indicator on the hand attached UI to reflect the current fill level of the spray can..." alt="" coords="224,5,417,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,23,208,23,208,28,176,28"/>
+</map>

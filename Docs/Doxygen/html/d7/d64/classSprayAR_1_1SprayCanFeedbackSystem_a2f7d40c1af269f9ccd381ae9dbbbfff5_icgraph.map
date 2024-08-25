@@ -1,0 +1,5 @@
+<map id="SprayAR.SprayCanFeedbackSystem.TransitionSpraySoundVolume" name="SprayAR.SprayCanFeedbackSystem.TransitionSpraySoundVolume">
+<area shape="rect" id="Node000001" title="Transitions the volume of the spray sound to allow for smooth volume changes." alt="" coords="235,5,477,46"/>
+<area shape="rect" id="Node000002" href="$d7/df8/classSprayAR_1_1SprayingState.html#a048454c30de529e319452979e9f62157" title=" " alt="" coords="5,5,187,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,28,187,28,187,23,219,23"/>
+</map>
