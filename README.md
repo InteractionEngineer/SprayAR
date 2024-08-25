@@ -1,88 +1,88 @@
-# Technische Dokumentation
+# Technical documentation
 
-Dieses Dokument beinhaltet die technische Dokumentation des Projektes "SprayAR" von Jona König und David Credo. Es soll einen Überblick über die Systeme und Komponenten des Projektes geben und deren Funktionsweisen erläutern, um so die Wartung und Weiterentwicklung des Projektes zu erleichtern. Ferner werden die notwendigen Schritte zur Einrichtung des Projektes und zur Erstellung einer Build-Version beschrieben.
+This document contains the technical documentation of the “SprayAR” project by Jona König and David Credo. It is intended to provide an overview of the systems and components of the project and explain how they work in order to facilitate the maintenance and further development of the project. It also describes the steps required to set up the project and create a build version.
 
-Projekttitel: SprayAR
-Unity Version: 2022.3.22f1
-Verwendete AR/VR Hardware: Open XR, Meta Quest 3
-Teammitglieder: Jona König, David Credo
+Project title: SprayAR
+Unity version: 2022.3.22f1
+AR/VR hardware used: Open XR, Meta Quest 3
+Team members: Jona König, David Credo
 
-## Inhaltsverzeichnis
+## Table of contents
 
-1. [Einleitung](#einleitung)
-    - [Ordnerstruktur](#ordnerstruktur)
-    - [Einrichtung und Deployment](#einrichtung-und-deployment)
-2. [Grundlegende Architektur](#grundlegende-architektur)
-    - [Event-Bus](#event-bus)
-    - [State Machine](#state-machine)
-    - [OSC-Service](#osc-service)
-3. [Eigenleistungen und 3rd-Party-Assets](#eigenleistungen-und-3rd-party-assets)
-    - [Sounds](#sounds)
-    - [Grafiken](#grafiken)
+1. [Introduction](#introduction)
+    - Folder structure](#folder structure)
+    - Setup and deployment](#setup-and-deployment)
+2. [Basic architecture](#basic-architecture)
+    - Event bus](#event-bus)
+    - State Machine](#state-machine)
+    - OSC-Service](#osc-service)
+3. [3rd-party assets](#3rd-party-assets)
+    - Sounds](#sounds)
+    - Graphics](#graphics)
 
-## Einleitung
+## Introduction
 
-### Ordnerstruktur
+### Folder structure
 
-Im Projekt sind folgende Ordner und Dateien für die Weiterentwicklung relevant:
+In the project, the following folders and files are relevant for further development:
 
-- **Assets**: Enthält alle Assets des Projektes, wie 3D-Modelle, Texturen, Materialien, Prefabs, Skripte, Szenen, etc.
-- **Packages**: Enthält alle externen Packages, die im Projekt verwendet werden.
-- **Doxyfile**: Konfigurationsdatei für die Dokumentation des Projektes.
+- **Assets**: Contains all assets of the project, such as 3D models, textures, materials, prefabs, scripts, scenes, etc.
+- **Packages**: Contains all external packages used in the project.
+- **Doxyfile**: Configuration file for the documentation of the project.
 
-### Einrichtung und Deployment
+### Setup and deployment
 
-Der Deployment-Prozess ist weitestgehend identisch zum Standardprozess in Unity. Es sind jedoch spezielle Schritte notwendig, damit die Kommunikation mittels OSC zwischen dem ESP32 und Unity funktioniert. 
+The deployment process is largely identical to the standard process in Unity. However, special steps are necessary to ensure that communication between the ESP32 and Unity via OSC works. 
 
-Vorab: Das zugehörige Repository für den ESP32 ist unter folgendem Link zu finden: [SprayAR-ESP32](https://github.com/InteractionEngineer/Schuetteldose)
+First of all: The corresponding repository for the ESP32 can be found at the following link: [SprayAR-ESP32](https://github.com/InteractionEngineer/Schuetteldose)
 
-1. IP Adresse der Quest 3 herausfinden (Einstellungen -> WLAN -> Verbindungsdetails)
-2. Gefundene IP Adresse im Quellcode des ESP32 anpassen
-3. IP Adresse des ESP32 herausfinden (Serial Monitor gibt die IP Adresse aus, wenn der ESP32 startet)
-4. Unity -> Szenenhierarchie -> OSCManager -> OSC Service -> Spraying Can IP anpassen (IP Adresse des ESP32)
-5. Unity -> Szenenhierarchie -> OSCManager -> OSC Service -> Spraying Can Port ggf. anpassen (Standardport: 9999)
-6. Sicherstellen, dass das Build-Target auf Android steht
-7. Build-Prozess starten
+1. find out the IP address of the Quest 3 (Settings -> WLAN -> Connection details)
+2. adjust the IP address found in the source code of the ESP32
+3. find out the IP address of the ESP32 (Serial Monitor displays the IP address when the ESP32 starts)
+4. unity -> scene hierarchy -> OSCManager -> OSC Service -> Spraying Can IP adapt (IP address of the ESP32)
+5. adjust Unity -> Scene hierarchy -> OSCManager -> OSC Service -> Spraying Can Port if necessary (default port: 9999)
+6. make sure that the build target is set to Android
+7. start build process
 
-## Grundlegende Architektur
+## Basic architecture
 
-### Überblick des Gesamtsystems
+### Overview of the overall system
 
-![Systemübersicht](./Docs/Diagrams/Systemarchitektur.png)
+![System overview](./Docs/Diagrams/Systemarchitektur.png)
 
-### Event-Bus
+### Event bus
 
-Der Event-Bus ist ein zentrales Element des Projektes, um die Kommunikation zwischen den verschiedenen Komponenten zu ermöglichen. Er basiert auf dem Observer-Pattern und ermöglicht es, dass Komponenten auf Ereignisse reagieren können, ohne direkt voneinander abhängig zu sein. Der Event-Bus ist als statische Klasse implementiert und kann von überall im Projekt aufgerufen werden.
+The event bus is a central element of the project to enable communication between the various components. It is based on the observer pattern and enables components to react to events without being directly dependent on each other. The event bus is implemented as a static class and can be called from anywhere in the project.
 
-### OSC-Service
+### OSC service
 
-Der OSC-Service ermöglicht die Kommunikation zwischen dem ESP32 und Unity mittels OSC. Er empfängt OSC-Nachrichten vom ESP32 und leitet sie an die entsprechenden Komponenten weiter. Ebenso sendet er OSC-Nachrichten, wenn Ereignisse in Unity auftreten (Z.B. wenn die Farbe der Spraying Can aufgefüllt wird).
+The OSC service enables communication between the ESP32 and Unity via OSC. It receives OSC messages from the ESP32 and forwards them to the corresponding components. It also sends OSC messages when events occur in Unity (e.g. when the color of the spraying can is filled).
 
-Klassendiagramm des OSC-Service:
-![Klassendiagramm des OSC-Service](./Docs/Diagrams/OSCClassDiagram.png)
+Class diagram of the OSC service:
+![Class diagram of the OSC service](./Docs/Diagrams/OSCClassDiagram.png)
 
 
 ### Spraying Can System
 
-Das Spraying Can System besteht aus mehreren Komponenten: 
+The Spraying Can System consists of several components: 
 
-- **SprayCan** Die SprayCan Klasse stellt die Hauptkomponente des Systems dar. Sie enthält die Logik für das Sprühen sowie die relevanten Daten (Farbe, Füllstand, etc.). Außerdem delegiert sie Arbeit an weitere Komponenten: die State Machine und das Feedback System.
-- **State Machine** Die State Machine verwaltet den Zustand der Spraying Can. Sie besteht aus mehreren States, die die verschiedenen Zustände der Spraying Can repräsentieren. Weitere Informationen zur State Machine finden sich im Abschnitt [State Machine](#state-machine).
-- **Feedback System** Das Feedback System ist für die visuelle und haptische Rückmeldung des verschiedener Vorgänge der Spraying Can zuständig. Es besteht aus mehreren Komponenten, die die verschiedenen Feedbacks repräsentieren (z.B. das Auffüllen der Farbe oder das Sprühen, und Anzeigen des UIs).
+- **SprayCan** The SprayCan class is the main component of the system. It contains the logic for spraying as well as the relevant data (color, fill level, etc.). It also delegates work to other components: the state machine and the feedback system.
+- State machine** The state machine manages the status of the spraying can. It consists of several states that represent the different states of the spraying can. Further information on the state machine can be found in the section [State machine](#state-machine).
+- Feedback system** The feedback system is responsible for the visual and haptic feedback of the various processes of the spraying can. It consists of several components that represent the various feedbacks (e.g. filling the color or spraying, and displaying the UI).
 
-Nachfolgend ist ein Klassendiagramm des Spraying Can Systems dargestellt:
-![Klassendiagramm des Spraying Can Systems](./Docs/Diagrams/SprayingCanClassDiagram.png)
+A class diagram of the Spraying Can system is shown below:
+![Class diagram of the Spraying Can System](./Docs/Diagrams/SprayingCanClassDiagram.png)
 
 #### State Machine
 
-Das State Machine Pattern wird verwendet, um den Zustand der Spraying Can zu verwalten. Sie besteht aus mehreren States, die die verschiedenen Zustände der Spraying Can repräsentieren.
+The state machine pattern is used to manage the state of the spraying can. It consists of several states that represent the different states of the spraying can.
 
-Nachfolgend ist ein State-Diagramm der Spraying Can State Machine dargestellt:
-![State Diagramm der Spraying Can State Machine](./Docs/Diagrams/StateMachine.png)
+A state diagram of the spraying can state machine is shown below:
+![State Diagram of Spraying Can State Machine](./Docs/Diagrams/StateMachine.png)
 
-## Eigenleistungen und 3rd-Party-Assets
+## 3rd party assets
 
-Folgende 3rd-Party-Assets wurden im Projekt verwendet:
+The following 3rd party assets were used in the project:
 
 ### Sounds
 
