@@ -4,7 +4,7 @@ This document contains the technical documentation of the “SprayAR” project 
 
 Project title: SprayAR
 Unity version: 2022.3.22f1
-AR/VR hardware used: Open XR, Meta Quest 3
+XR stack used: Open XR, Meta Quest 3
 Team members: Jona König, David Credo
 
 ## Table of contents
@@ -67,8 +67,8 @@ Class diagram of the OSC service:
 The Spraying Can System consists of several components: 
 
 - **SprayCan** The SprayCan class is the main component of the system. It contains the logic for spraying as well as the relevant data (color, fill level, etc.). It also delegates work to other components: the state machine and the feedback system.
-- State machine** The state machine manages the status of the spraying can. It consists of several states that represent the different states of the spraying can. Further information on the state machine can be found in the section [State machine](#state-machine).
-- Feedback system** The feedback system is responsible for the visual and haptic feedback of the various processes of the spraying can. It consists of several components that represent the various feedbacks (e.g. filling the color or spraying, and displaying the UI).
+- **State machine** The state machine manages the status of the spraying can. It consists of several states that represent the different states of the spraying can. Further information on the state machine can be found in the section [State machine](#state-machine).
+- **Feedback system** The feedback system is responsible for the visual and haptic feedback of the various processes of the spraying can. It consists of several components that represent the various feedbacks (e.g. filling the color or spraying, and displaying the UI).
 
 A class diagram of the Spraying Can system is shown below:
 ![Class diagram of the Spraying Can System](./Docs/Diagrams/SprayingCanClassDiagram.png)
