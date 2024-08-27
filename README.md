@@ -10,15 +10,15 @@ Team members: Jona König, David Credo
 ## Table of contents
 
 1. [Introduction](#introduction)
-    - Folder structure](#folder structure)
-    - Setup and deployment](#setup-and-deployment)
+    - [Folder structure](#folder-structure)
+    - [Setup and deployment](#setup-and-deployment)
 2. [Basic architecture](#basic-architecture)
-    - Event bus](#event-bus)
-    - State Machine](#state-machine)
-    - OSC-Service](#osc-service)
+    - [Event bus](#event-bus)
+    - [State Machine](#state-machine)
+    - [OSC-Service](#osc-service)
 3. [3rd-party assets](#3rd-party-assets)
-    - Sounds](#sounds)
-    - Graphics](#graphics)
+    - [Sounds](#sounds)
+    - [Graphics](#graphics)
 
 ## Introduction
 
@@ -91,7 +91,7 @@ The following 3rd party assets were used in the project:
   - smoke-machine-spray-3-185122.mp3
   - system-notification-199277.mp3
 
-### Grafiken
+### Graphics
 
 - [Icons8](https://icons8.de/icons/set/battery)
   - icons8-batterie-voll-geladen-100.png
